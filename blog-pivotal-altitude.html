@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Physical Origins of the Pivotal Altitude - Adam S. Goler, PhD">
+    <title>Pivotal Altitude - Adam S. Goler, PhD</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .blog-article { max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.8; }
+        .blog-article h2, .blog-article h4 { margin-top: 2rem; }
+        .blog-article p { margin-bottom: 1.5rem; }
+        .blog-meta { color: #666; margin-bottom: 2rem; }
+        .back-link { margin-bottom: 2rem; display: inline-block; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Adam S. Goler, PhD</h1>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Physical Origins of the Pivotal Altitude</h2>
+            <p class="blog-meta">March 13, 2022 | Tags: Aviation, CFI, Physics</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+
+        <p>A short discussion on the origins of the concept known as "pivotal altitude".</p>
+
+        <h4>Background</h4>
+
+        <p>If you've earned or are in the process of earning your commercial pilot certificate (single or multi) then you probably have heard of the concept known as the "pivotal altitude". Specifically, this concept is used in performing the maneuver known as "eights on pylons", which is a required maneuver on the commercial pilot check ride. It is a slightly advanced variation of the concept of "turns around a point", which is a required maneuver at the private pilot level.</p>
+
+        <p>Both of these maneuvers are similar in that they are known as ground reference maneuvers, which are performed at lower altitudes. They are useful (hence required) for demonstrating a pilot's ability to judge the effects of wind during an extended maneuver, while dividing attention, staying coordinated, and maintaining a specific attitude with respect to a particular ground reference.</p>
+
+        <p>Turns around a point uses a single "pylon" or prominent ground reference point (such as a road intersection, building, or other distinguishable feature), whereas eights on pylons requires two points, spaced a certain distance apart. In the latter case, rather than flying a circle (over the ground) around the point, the pilot flies a figure eight pattern with the pylons at the centers of each of the "holes" in the figure eight.</p>
+
+        <h4>Why is the "pivotal altitude" important?</h4>
+
+        <p>In the eights on pylons maneuver, the pilot is required to maintain approximately 30 degrees of bank, at a constant power setting, while flying a consistent ground track with respect to two physical points on the ground. By using constant power, the airspeed is essentially constant, so given a required bank angle (say 30 degrees), to track our reference in a circular path we are restricted to a <em>specific</em> altitude. That altitude is called the <strong>pivotal altitude</strong>. Your ground speed (since this is a ground reference maneuver) is the key parameter here. Fly faster, and the pivotal altitude increases; Fly slower and the reverse is true. The desired bank angle only relates to your distance from the ground reference point. It will turn out to not affect the pivotal altitude at all (as we will see)!</p>
+
+        <h4>Talk is cheap, show me the math</h4>
+
+        <p>Let's assume we are flying in an aircraft in a level turn around a ground reference point at a height \(H\) above the ground, with bank angle \(\theta\), and that we are a radial distance \(r\) from the reference object in question. Let's also call our airspeed \(v_{t}\) (the \(t\) is for "tangential" to the circular path). We then know that our centripetal acceleration is given by</p>
+
+        \[a_{c} = \frac{v_{t}^2}{r}\]
+
+        <p>Great. Now what?</p>
+
+        <p>Well, remember that in order to have a level turn, we need our weight (gravitational force) to be balanced by the force of lift, \(L\). Since we are in a bank, we know this is the vertical component of lift, whereas the horizontal component (with respect to Earth's surface) is the force causing us to turn. So, we can write an expression of Newton's Second Law in both the vertical and horizontal directions:</p>
+
+        \[\sum F_{x} = m a_{c} = L \sin \theta\]
+        \[\sum F_{y} = 0 = L \cos \theta - mg\]
+
+        <p>We can eliminate \(L\) in the \(F_{x}\) equation using \(L = mg / \cos\theta\). Canceling the mass \(m\), we have</p>
+
+        \[a_{c} = g \frac{\sin\theta}{\cos\theta}\]
+
+        <p>And now inserting our knowledge that the centripetal force is the ratio of \(v_{t}^{2}\) to \(r\), and also the trig identity that \(\tan\theta\) is the ratio of \(\sin\theta\) to \(\cos\theta\) we find that</p>
+
+        \[\frac{v_{t}^{2}}{r} = g \tan \theta\]
+
+        <p>Rearranging this, noting that \(r\tan\theta = H\) defined above, we can solve for \(H\), which is our pivotal altitude!</p>
+
+        \[H = \frac{v_{t}^{2}}{g}\]
+
+        <p>Key insights here are that the pivotal altitude depends <em>only</em> on the aircraft ground speed, and that the radial distance as well as the bank angle (though implicitly related) do not have any impact on the altitude given by the above equation.</p>
+
+        <p>Note now that the typical formula given for pivotal altitude is in terms of the value 11.3, rather than good old \(g\):</p>
+
+        \[PA = \frac{GS^{2}}{11.3}\]
+
+        <p>where groundspeed (GS) is given in knots and the PA is in feet AGL. Simply convert \(g = 9.81 m/s^2\) to units of \(knots^2/ft\) and there you go! This will be left as an exercise for the reader... :)</p>
+
+        <h4>OK, so how does this help me fly eights on pylons?</h4>
+
+        <p>Knowledge is power, but so is practice. Tips on the actual maneuver is a totally different topic, but knowing where the equation comes from at least should help solidify that given a particular sight picture of a ground reference, pivotal altitude only depends on your groundspeed!</p>
+
+        <p>Cheers and fly safe!</p>
+
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Adam S. Goler. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

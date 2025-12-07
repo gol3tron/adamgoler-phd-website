@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Adam Goler's research and projects">
-    <title>Portfolio - Adam Goler, PhD</title>
+    <meta name="description" content="Portfolio of Adam S. Goler's research and projects">
+    <title>Portfolio - Adam S. Goler, PhD</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <h1>Adam Goler, PhD</h1>
+                <h1>Adam S. Goler, PhD</h1>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -21,6 +24,8 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -29,31 +34,73 @@
 
     <section class="page-header">
         <div class="container">
-            <h2>My Portfolio</h2>
-            <p>A showcase of my research projects, publications, and professional work</p>
+            <h2>Portfolio</h2>
+            <p>A showcase of my research, projects, and professional work</p>
         </div>
     </section>
 
     <section class="portfolio-content">
         <div class="container">
             <div class="portfolio-grid">
+                
                 <article class="portfolio-item">
                     <div class="portfolio-image">
-                        <div class="placeholder-image">📊</div>
+                        <div class="placeholder-image">🛩️</div>
                     </div>
                     <div class="portfolio-details">
-                        <h3>Research Project 1</h3>
-                        <p class="portfolio-category">Academic Research</p>
+                        <h3>GADfly - Generalized Anomaly Detection</h3>
+                        <p class="portfolio-category">Machine Learning / Aviation</p>
                         <p>
-                            A comprehensive study exploring key concepts and methodologies 
-                            in the field. This project resulted in significant findings and 
-                            contributions to the academic community.
+                            Lead developer for the Generalized Anomaly Detection (GADfly) program at Savvy Aviation. 
+                            Using machine learning models to analyze engine monitor data for predictive maintenance 
+                            of piston aircraft.
                         </p>
                         <div class="portfolio-tags">
-                            <span class="tag">Research</span>
-                            <span class="tag">Analysis</span>
-                            <span class="tag">Publication</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Aviation</span>
+                            <span class="tag">Data Science</span>
                         </div>
+                        <a href="https://www.aopa.org/news-and-media/all-news/2025/july/pilot/savvy-maintenance-project-gadfly-update" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image">🔧</div>
+                    </div>
+                    <div class="portfolio-details">
+                        <h3>FEVA - Failing Exhaust Valve Analytics</h3>
+                        <p class="portfolio-category">Predictive Maintenance</p>
+                        <p>
+                            Developed machine learning models for detecting failing exhaust valves in piston aircraft 
+                            engines before they cause catastrophic failure. Uses engine monitor data to identify 
+                            early warning signs.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">ML/AI</span>
+                            <span class="tag">Predictive Analytics</span>
+                            <span class="tag">Safety</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image">✈️</div>
+                    </div>
+                    <div class="portfolio-details">
+                        <h3>Performance Calculator</h3>
+                        <p class="portfolio-category">Aviation Tool</p>
+                        <p>
+                            A web-based Cessna 172S performance calculator for takeoff, climb, and cruise calculations. 
+                            Built as an aid to flight instruction and planning, using POH data with interpolation.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Web App</span>
+                            <span class="tag">Aviation</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <a href="calculator.html" class="btn btn-secondary" style="margin-top: 1rem;">Try It →</a>
                     </div>
                 </article>
 
@@ -62,106 +109,72 @@
                         <div class="placeholder-image">🔬</div>
                     </div>
                     <div class="portfolio-details">
-                        <h3>Experimental Study</h3>
-                        <p class="portfolio-category">Laboratory Research</p>
+                        <h3>Understanding Molecular Machines</h3>
+                        <p class="portfolio-category">PhD Dissertation</p>
                         <p>
-                            An innovative experimental approach to testing hypotheses and 
-                            validating theoretical frameworks. Published in peer-reviewed journals.
+                            Doctoral research combining theoretical and experimental approaches to study molecular 
+                            machines. Super-resolution single-molecule fluorescence microscopy studies of biomimetic systems.
                         </p>
                         <div class="portfolio-tags">
-                            <span class="tag">Experiment</span>
-                            <span class="tag">Data Collection</span>
-                            <span class="tag">Peer-Reviewed</span>
+                            <span class="tag">Physics</span>
+                            <span class="tag">Research</span>
+                            <span class="tag">Dissertation</span>
+                        </div>
+                        <a href="https://rex.libraries.wsu.edu/esploro/outputs/doctoral/Understanding-Molecular-Machines-Theoretical-and-Experimental/99900581530001842" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">View Dissertation →</a>
+                    </div>
+                </article>
+
+                <article class="portfolio-item">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image">📡</div>
+                    </div>
+                    <div class="portfolio-details">
+                        <h3>Marine Innovation Unit Projects</h3>
+                        <p class="portfolio-category">Defense Technology</p>
+                        <p>
+                            Experimentation and prototyping work evaluating emerging technologies for Marine Corps 
+                            capabilities. Testing novel technologies in operational environments and developing 
+                            new concepts.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Innovation</span>
+                            <span class="tag">Defense</span>
+                            <span class="tag">Prototyping</span>
                         </div>
                     </div>
                 </article>
 
                 <article class="portfolio-item">
                     <div class="portfolio-image">
-                        <div class="placeholder-image">📝</div>
+                        <div class="placeholder-image">🧬</div>
                     </div>
                     <div class="portfolio-details">
-                        <h3>Published Paper</h3>
-                        <p class="portfolio-category">Academic Publication</p>
+                        <h3>Membrane Protein Tracking</h3>
+                        <p class="portfolio-category">Published Research</p>
                         <p>
-                            A detailed analysis and discussion of emerging trends in the field, 
-                            contributing to the ongoing scholarly discourse.
+                            Research publication on tracking individual membrane proteins and their biochemistry 
+                            using direct observation techniques. Published in peer-reviewed journal.
                         </p>
                         <div class="portfolio-tags">
                             <span class="tag">Publication</span>
-                            <span class="tag">Writing</span>
-                            <span class="tag">Theory</span>
+                            <span class="tag">Biophysics</span>
+                            <span class="tag">Microscopy</span>
                         </div>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/25998277/" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">Read Paper →</a>
                     </div>
                 </article>
 
-                <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">🎯</div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Applied Research Project</h3>
-                        <p class="portfolio-category">Industry Collaboration</p>
-                        <p>
-                            Bridging the gap between academic research and practical applications 
-                            through collaborative work with industry partners.
-                        </p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Applied Research</span>
-                            <span class="tag">Collaboration</span>
-                            <span class="tag">Innovation</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">🏆</div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Award-Winning Work</h3>
-                        <p class="portfolio-category">Recognized Achievement</p>
-                        <p>
-                            Research work that received recognition and awards from professional 
-                            organizations and academic institutions.
-                        </p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Award</span>
-                            <span class="tag">Excellence</span>
-                            <span class="tag">Recognition</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">🌐</div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Conference Presentation</h3>
-                        <p class="portfolio-category">Academic Conference</p>
-                        <p>
-                            Presented findings at international conferences, engaging with 
-                            peers and contributing to the global academic community.
-                        </p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Conference</span>
-                            <span class="tag">Presentation</span>
-                            <span class="tag">Networking</span>
-                        </div>
-                    </div>
-                </article>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Adam Goler. All rights reserved.</p>
+            <p>&copy; 2024 Adam S. Goler. All rights reserved.</p>
             <div class="social-links">
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="Twitter">Twitter</a>
-                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+                <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank" aria-label="ResearchGate">ResearchGate</a>
             </div>
         </div>
     </footer>

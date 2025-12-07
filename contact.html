@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Adam Goler, PhD">
-    <title>Contact - Adam Goler, PhD</title>
+    <meta name="description" content="Contact Adam S. Goler, PhD">
+    <title>Contact - Adam S. Goler, PhD</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <h1>Adam Goler, PhD</h1>
+                <h1>Adam S. Goler, PhD</h1>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -21,6 +24,8 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
@@ -41,35 +46,35 @@
                     <h3>Contact Information</h3>
                     <p>
                         Feel free to reach out for collaborations, speaking engagements, 
-                        or just to connect. I'm always interested in discussing new ideas 
-                        and opportunities.
+                        flight instruction inquiries, or just to connect. I'm always interested 
+                        in discussing new ideas and opportunities.
                     </p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
-                            <div class="contact-icon">📧</div>
+                            <div class="contact-icon">✈️</div>
                             <div>
-                                <h4>Email</h4>
-                                <p><a href="mailto:adam.goler@example.com">adam.goler@example.com</a></p>
+                                <h4>Flight Instruction</h4>
+                                <p><a href="https://www.abcflight.school" target="_blank">ABC Flight Training LLC</a></p>
                             </div>
                         </div>
                         
                         <div class="contact-item">
-                            <div class="contact-icon">🏢</div>
+                            <div class="contact-icon">💼</div>
                             <div>
-                                <h4>Office</h4>
-                                <p>University Department<br>Research Building, Room 123</p>
+                                <h4>Professional</h4>
+                                <p><a href="https://www.linkedin.com/in/asgoler/" target="_blank">LinkedIn Profile</a></p>
                             </div>
                         </div>
                         
                         <div class="contact-item">
                             <div class="contact-icon">🌐</div>
                             <div>
-                                <h4>Social Media</h4>
+                                <h4>Social & Code</h4>
                                 <p>
-                                    <a href="#">LinkedIn</a> | 
-                                    <a href="#">Twitter</a> | 
-                                    <a href="#">GitHub</a>
+                                    <a href="https://github.com/gol3tron" target="_blank">GitHub</a> | 
+                                    <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank">ResearchGate</a> | 
+                                    <a href="https://www.instagram.com/adam_goler_cfii/" target="_blank">Instagram</a>
                                 </p>
                             </div>
                         </div>
@@ -78,7 +83,7 @@
                 
                 <div class="contact-form-container">
                     <h3>Send a Message</h3>
-                    <form id="contactForm" class="contact-form" novalidate>
+                    <form id="contactForm" class="contact-form" action="https://getform.io/f/8936829c-cd06-4e04-b409-a405a44f1c9f" method="POST" target="_blank">
                         <div class="form-group">
                             <label for="name">Name *</label>
                             <input 
@@ -88,7 +93,6 @@
                                 required 
                                 placeholder="Your name"
                             >
-                            <span class="error-message" id="nameError"></span>
                         </div>
                         
                         <div class="form-group">
@@ -100,19 +104,6 @@
                                 required 
                                 placeholder="your.email@example.com"
                             >
-                            <span class="error-message" id="emailError"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <input 
-                                type="text" 
-                                id="subject" 
-                                name="subject" 
-                                required 
-                                placeholder="What is this about?"
-                            >
-                            <span class="error-message" id="subjectError"></span>
                         </div>
                         
                         <div class="form-group">
@@ -124,12 +115,9 @@
                                 required 
                                 placeholder="Your message here..."
                             ></textarea>
-                            <span class="error-message" id="messageError"></span>
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Send Message</button>
-                        
-                        <div class="form-status" id="formStatus"></div>
                     </form>
                 </div>
             </div>
@@ -138,11 +126,11 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Adam Goler. All rights reserved.</p>
+            <p>&copy; 2024 Adam S. Goler. All rights reserved.</p>
             <div class="social-links">
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="Twitter">Twitter</a>
-                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+                <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank" aria-label="ResearchGate">ResearchGate</a>
             </div>
         </div>
     </footer>

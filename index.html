@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional portfolio and blog of Adam Goler, PhD">
-    <title>Adam Goler - PhD Portfolio</title>
+    <meta name="description" content="Adam S. Goler, PhD - Data Science & Physics Consulting">
+    <title>Adam Goler, PhD | Data Science & Physics Consulting</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <h1>Adam Goler, PhD</h1>
+                <h1>Adam S. Goler, PhD</h1>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -21,6 +24,8 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -30,62 +35,65 @@
     <header class="hero">
         <div class="container">
             <div class="hero-content">
-                <h2>Welcome to My Professional Portfolio</h2>
-                <p class="lead">PhD Researcher | Academic | Innovator</p>
-                <p>Exploring the intersection of research, technology, and innovation.</p>
-                <a href="portfolio.html" class="btn btn-primary">View My Work</a>
-                <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                <h2>Physics-Driven Data Science & Consulting</h2>
+                <p class="lead">Solving complex problems with scientific rigor and advanced analytics.</p>
+                <p>I help organizations unlock insights from their data, build robust machine learning models, and bridge the gap between theoretical physics and practical application.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="contact.html" class="btn btn-primary">Work With Me</a>
+                    <a href="portfolio.html" class="btn btn-secondary">View Projects</a>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="about" id="about">
+    <section class="services bg-light">
         <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I am a dedicated researcher with a PhD, passionate about advancing knowledge 
-                        and contributing to meaningful innovations in my field. My work focuses on 
-                        bridging theoretical concepts with practical applications.
-                    </p>
-                    <p>
-                        With years of experience in academic research, I bring a unique perspective 
-                        that combines rigorous scientific methodology with creative problem-solving. 
-                        I am committed to excellence in both research and education.
-                    </p>
-                    <h3>Areas of Expertise</h3>
-                    <ul class="expertise-list">
-                        <li>Research Methodology</li>
-                        <li>Data Analysis</li>
-                        <li>Academic Writing</li>
-                        <li>Project Management</li>
-                        <li>Critical Thinking</li>
-                        <li>Innovation & Development</li>
-                    </ul>
+            <div class="section-title">
+                <h2>How I Can Help</h2>
+                <p>Leveraging a background in experimental physics and advanced data science to deliver actionable results.</p>
+            </div>
+            
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Data Science & ML</h3>
+                    <p>End-to-end machine learning solutions, from feature engineering on sensor data to deploying predictive maintenance models. Expertise in anomaly detection and time-series analysis.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚛️</div>
+                    <h3>Physical Sciences</h3>
+                    <p>Consulting on complex physical systems, experimental design, and sensor integration. Applying first-principles thinking to engineering challenges.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Education & Training</h3>
+                    <p>Technical coaching, curriculum development, and workshops. I translate complex technical concepts into clear, understandable insights for teams and stakeholders.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="highlights">
+    <section class="about">
         <div class="container">
-            <h2>Highlights</h2>
-            <div class="cards">
-                <div class="card">
-                    <div class="card-icon">📚</div>
-                    <h3>Research</h3>
-                    <p>Cutting-edge research in my field with published work in peer-reviewed journals.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🎓</div>
-                    <h3>Education</h3>
-                    <p>PhD qualification with extensive academic training and continuous learning.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">💡</div>
-                    <h3>Innovation</h3>
-                    <p>Developing innovative solutions that make a real-world impact.</p>
+            <div class="about-content">
+                <div>
+                    <h2>About Me</h2>
+                    <p>I'm a physicist by training, interested in building teams to solve challenging problems, and looking to make a positive impact on the world around me.</p>
+                    <p>Currently, I work as a Data Scientist and MLOps Engineer for <strong>Savvy Aviation</strong>, developing predictive maintenance models for aircraft engines. I also serve as an Experimentation Manager for the <strong>Marine Innovation Unit</strong>, evaluating emerging technologies.</p>
+                    <p>With a PhD in Physics and experience in the semiconductor industry, I bring a unique multidisciplinary perspective to every project.</p>
+                    
+                    <ul class="expertise-list">
+                        <li>Shock Physics</li>
+                        <li>Ultracold Atomic Physics</li>
+                        <li>Orbital Mechanics</li>
+                        <li>Biophysics & Microscopy</li>
+                        <li>Machine Learning</li>
+                        <li>Flight Instruction</li>
+                    </ul>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="cv.html" class="btn btn-secondary">View Full CV</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -93,11 +101,11 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Adam Goler. All rights reserved.</p>
+            <p>&copy; 2024 Adam S. Goler, PhD. All rights reserved.</p>
             <div class="social-links">
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="Twitter">Twitter</a>
-                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+                <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank" aria-label="ResearchGate">ResearchGate</a>
             </div>
         </div>
     </footer>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Calculator - Adam Goler</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .calculator-section { padding: 4rem 0; }
+        .calc-container { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-color); }
+        .form-control { width: 100%; padding: 0.875rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 1rem; color: var(--text-color); box-sizing: border-box; transition: var(--transition); }
+        .form-control:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2); }
+        .btn-calc { width: 100%; padding: 1rem; background: var(--primary-color); color: var(--bg-color); border: none; border-radius: var(--radius); font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: var(--transition); margin-top: 1rem; }
+        .btn-calc:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3); }
+        .results-box { margin-top: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: var(--radius); border-left: 4px solid var(--primary-color); display: none; }
+        .results-box h3 { margin-top: 0; color: var(--text-color); }
+        .result-item { display: flex; justify-content: space-between; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); color: var(--text-light); }
+        .result-item span:last-child { color: var(--text-color); font-weight: 600; }
+        .result-item:last-child { border-bottom: none; }
+        .tabs { display: flex; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
+        .tab { padding: 1rem 2rem; cursor: pointer; font-weight: 600; color: var(--text-muted); transition: var(--transition); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+        .tab:hover { color: var(--primary-color); }
+        .tab.active { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); }
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Adam Goler, PhD</h1>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="calculator.html" class="active">Calculator</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding: 4rem 0; min-height: auto;">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Cessna 172S Performance Calculator</h2>
+                <p>Calculate takeoff and cruise performance based on POH data.</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calc-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="switchTab('takeoff')">Takeoff</div>
+                    <div class="tab" onclick="switchTab('climb')">Climb</div>
+                    <div class="tab" onclick="switchTab('cruise')">Cruise</div>
+                </div>
+
+                <!-- Takeoff Form -->
+                <div id="takeoff" class="tab-content active">
+                    <form id="takeoffForm">
+                        <div class="form-group">
+                            <label>Aircraft Weight (lbs)</label>
+                            <input type="number" id="to_weight" class="form-control" value="2550" min="2200" max="2550">
+                        </div>
+                        <div class="form-group">
+                            <label>Temperature (°C)</label>
+                            <input type="number" id="to_temp" class="form-control" value="15">
+                        </div>
+                        <div class="form-group">
+                            <label>Altimeter Setting (inHg)</label>
+                            <input type="number" id="to_altimeter" class="form-control" value="29.92" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label>Field Elevation (ft)</label>
+                            <input type="number" id="to_elevation" class="form-control" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Runway Heading (°)</label>
+                            <input type="number" id="to_rwy_heading" class="form-control" value="360" max="360">
+                        </div>
+                        <div class="form-group">
+                            <label>Wind Direction (°)</label>
+                            <input type="number" id="to_wind_dir" class="form-control" value="360" max="360">
+                        </div>
+                        <div class="form-group">
+                            <label>Wind Speed (kts)</label>
+                            <input type="number" id="to_wind_spd" class="form-control" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="to_grass"> Grass Runway
+                            </label>
+                        </div>
+                        <button type="button" class="btn-calc" onclick="calculateTakeoff()">Calculate Takeoff</button>
+                    </form>
+                    
+                    <div id="takeoffResults" class="results-box">
+                        <h3>Takeoff Performance</h3>
+                        <div class="result-item"><span>Pressure Altitude:</span> <span id="res_to_pa"></span></div>
+                        <div class="result-item"><span>Ground Roll:</span> <span id="res_to_gr"></span></div>
+                        <div class="result-item"><span>Distance over 50ft Obstacle:</span> <span id="res_to_50"></span></div>
+                        <div class="result-item"><span>Lift Off Speed:</span> <span id="res_to_vr"></span></div>
+                        <div class="result-item"><span>Speed at 50ft:</span> <span id="res_to_v50"></span></div>
+                    </div>
+                </div>
+
+                <!-- Climb Form -->
+                <div id="climb" class="tab-content">
+                    <form id="climbForm">
+                        <div class="form-group">
+                            <label>Starting Altitude (ft)</label>
+                            <input type="number" id="cl_start_alt" class="form-control" value="2000" step="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Ending Altitude (ft)</label>
+                            <input type="number" id="cl_end_alt" class="form-control" value="5000" step="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Indicated Airspeed (KIAS)</label>
+                            <input type="number" id="cl_ias" class="form-control" value="79">
+                        </div>
+                        <div class="form-group">
+                            <label>Start Climb Rate (fpm)</label>
+                            <input type="number" id="cl_start_rate" class="form-control" value="700">
+                        </div>
+                        <div class="form-group">
+                            <label>End Climb Rate (fpm)</label>
+                            <input type="number" id="cl_end_rate" class="form-control" value="500">
+                        </div>
+                        <div class="form-group">
+                            <label>Start Temp (°C)</label>
+                            <input type="number" id="cl_start_temp" class="form-control" value="15">
+                        </div>
+                        <div class="form-group">
+                            <label>End Temp (°C)</label>
+                            <input type="number" id="cl_end_temp" class="form-control" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label>Altimeter (inHg)</label>
+                            <input type="number" id="cl_altimeter" class="form-control" value="29.92" step="0.01">
+                        </div>
+                        <!-- Simplified wind inputs for brevity, can expand later -->
+                        <div class="form-group">
+                            <label>Start Wind (Dir/Spd)</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="cl_start_wind_dir" class="form-control" placeholder="Dir" value="270">
+                                <input type="number" id="cl_start_wind_spd" class="form-control" placeholder="Spd" value="10">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>End Wind (Dir/Spd)</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="cl_end_wind_dir" class="form-control" placeholder="Dir" value="270">
+                                <input type="number" id="cl_end_wind_spd" class="form-control" placeholder="Spd" value="15">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Heading (Start/End)</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="cl_start_heading" class="form-control" placeholder="Start" value="90">
+                                <input type="number" id="cl_end_heading" class="form-control" placeholder="End" value="90">
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-calc" onclick="calculateClimb()">Calculate Climb</button>
+                    </form>
+
+                    <div id="climbResults" class="results-box">
+                        <h3>Climb Performance</h3>
+                        <div class="result-item"><span>Max True Airspeed:</span> <span id="res_cl_tas"></span></div>
+                        <div class="result-item"><span>Max Ground Speed:</span> <span id="res_cl_gs"></span></div>
+                        <div class="result-item"><span>Min Climb Gradient:</span> <span id="res_cl_grad"></span></div>
+                    </div>
+                </div>
+
+                <!-- Cruise Form -->
+                <div id="cruise" class="tab-content">
+                    <form id="cruiseForm">
+                        <div class="form-group">
+                            <label>Cruise Altitude (ft)</label>
+                            <input type="number" id="cr_alt" class="form-control" value="4000" step="500">
+                        </div>
+                        <div class="form-group">
+                            <label>Temperature (°C)</label>
+                            <input type="number" id="cr_temp" class="form-control" value="15">
+                        </div>
+                        <div class="form-group">
+                            <label>RPM</label>
+                            <input type="number" id="cr_rpm" class="form-control" value="2300" step="50" min="2000" max="2700">
+                        </div>
+                        <div class="form-group">
+                            <label>Altimeter Setting (inHg)</label>
+                            <input type="number" id="cr_altimeter" class="form-control" value="29.92" step="0.01">
+                        </div>
+                        <button type="button" class="btn-calc" onclick="calculateCruise()">Calculate Cruise</button>
+                    </form>
+
+                    <div id="cruiseResults" class="results-box">
+                        <h3>Cruise Performance</h3>
+                        <div class="result-item"><span>Pressure Altitude:</span> <span id="res_cr_pa"></span></div>
+                        <div class="result-item"><span>True Airspeed (TAS):</span> <span id="res_cr_tas"></span></div>
+                        <div class="result-item"><span>Fuel Flow:</span> <span id="res_cr_ff"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Adam Goler. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/calculator.js"></script>
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // Find tab by text content or index
+            const tabs = document.querySelectorAll('.tab');
+            if(tabId === 'takeoff') tabs[0].classList.add('active');
+            else if(tabId === 'climb') tabs[1].classList.add('active');
+            else tabs[2].classList.add('active');
+            
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function calculateClimb() {
+            const params = {
+                startAlt: parseFloat(document.getElementById('cl_start_alt').value),
+                endAlt: parseFloat(document.getElementById('cl_end_alt').value),
+                indicatedAirspeed: parseFloat(document.getElementById('cl_ias').value),
+                startClimbRate: parseFloat(document.getElementById('cl_start_rate').value),
+                endClimbRate: parseFloat(document.getElementById('cl_end_rate').value),
+                startTemp: parseFloat(document.getElementById('cl_start_temp').value),
+                endTemp: parseFloat(document.getElementById('cl_end_temp').value),
+                altimeter: parseFloat(document.getElementById('cl_altimeter').value),
+                startWindDir: parseFloat(document.getElementById('cl_start_wind_dir').value),
+                startWindSpeed: parseFloat(document.getElementById('cl_start_wind_spd').value),
+                endWindDir: parseFloat(document.getElementById('cl_end_wind_dir').value),
+                endWindSpeed: parseFloat(document.getElementById('cl_end_wind_spd').value),
+                startHeading: parseFloat(document.getElementById('cl_start_heading').value),
+                endHeading: parseFloat(document.getElementById('cl_end_heading').value)
+            };
+
+            const results = window.Calculator.calculateClimbGradient(params);
+            
+            document.getElementById('res_cl_tas').textContent = results.maxTas + ' KTAS';
+            document.getElementById('res_cl_gs').textContent = results.maxGs + ' kts';
+            document.getElementById('res_cl_grad').textContent = results.minGradient + ' ft/nm';
+            
+            document.getElementById('climbResults').style.display = 'block';
+        }
+
+        function calculateTakeoff() {
+            const params = {
+                weight: parseFloat(document.getElementById('to_weight').value),
+                temperature: parseFloat(document.getElementById('to_temp').value),
+                altimeter: parseFloat(document.getElementById('to_altimeter').value),
+                altitude: parseFloat(document.getElementById('to_elevation').value),
+                runwayHeading: parseFloat(document.getElementById('to_rwy_heading').value),
+                windDirection: parseFloat(document.getElementById('to_wind_dir').value),
+                windSpeed: parseFloat(document.getElementById('to_wind_spd').value),
+                isGrass: document.getElementById('to_grass').checked
+            };
+
+            const results = window.Calculator.calculateTakeoff(params);
+            
+            document.getElementById('res_to_pa').textContent = results.pressureAlt + ' ft';
+            document.getElementById('res_to_gr').textContent = results.groundRoll + ' ft';
+            document.getElementById('res_to_50').textContent = results.dist50ft + ' ft';
+            document.getElementById('res_to_vr').textContent = results.liftOffSpeed + ' KIAS';
+            document.getElementById('res_to_v50').textContent = results.speed50ft + ' KIAS';
+            
+            document.getElementById('takeoffResults').style.display = 'block';
+        }
+
+        function calculateCruise() {
+            const params = {
+                altitude: parseFloat(document.getElementById('cr_alt').value),
+                temperature: parseFloat(document.getElementById('cr_temp').value),
+                rpm: parseFloat(document.getElementById('cr_rpm').value),
+                altimeter: parseFloat(document.getElementById('cr_altimeter').value)
+            };
+
+            const results = window.Calculator.calculateCruise(params);
+            
+            document.getElementById('res_cr_pa').textContent = results.pressureAlt + ' ft';
+            document.getElementById('res_cr_tas').textContent = results.trueAirspeed + ' KTAS';
+            document.getElementById('res_cr_ff').textContent = results.fuelFlow + ' GPH';
+            
+            document.getElementById('cruiseResults').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

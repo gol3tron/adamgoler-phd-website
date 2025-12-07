@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Building an Aviation Web App - Adam S. Goler, PhD">
+    <title>Building an Aviation Web App - Adam S. Goler, PhD</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-article { max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.8; }
+        .blog-article h2 { margin-top: 2rem; }
+        .blog-article p { margin-bottom: 1.5rem; }
+        .blog-article ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .blog-article ol li { margin-bottom: 0.5rem; }
+        .blog-meta { color: #666; margin-bottom: 2rem; }
+        .back-link { margin-bottom: 2rem; display: inline-block; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Adam S. Goler, PhD</h1>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Building an Aviation Web App (Part 1)</h2>
+            <p class="blog-meta">March 8, 2022 | Tags: Aviation, Python, CFI</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+
+        <p>Have you ever wished to have a (free) web-based calculator/companion to flight planning or performance calculations?</p>
+
+        <p>I've been working on my CFI rating for a little while now, and in the process of constructing lesson plans it has occurred to me that it might be instructive to create some kind of a web app and/or series of companion posts as an aid to explaining basic principles of flight/aircraft performance.</p>
+
+        <p>Specifically, I am envisioning creating a web-based tool that might perform a few different functions:</p>
+
+        <ol>
+            <li>Given an aircraft type and conditions, perform takeoff/landing performance calculation (likely a common training a/c such as a 172 or Cherokee/Archer)</li>
+            <li>Using POH recommendations for certain special conditions, give the user the ability to select "modifiers" to performance calculations (e.g. grass runways, sloping runways of specified grade, and different a/c loading conditions)</li>
+            <li>Create an "easy interpolator" for POH data to get performance data at specific conditions (generic such that it could be used as 1D or 2D interpolation of any type)</li>
+            <li>Vector visualization for true heading, true course, wind correction angle analysis as an aid to instruction</li>
+            <li>Vector visualization for forces of flight, left turning tendencies</li>
+            <li>Other simple calculators (pressure/density altitude, true airspeed/equivalent airspeed, top of climb/descent, crosswind component, maneuvering speed, stall speed vs bank/configuration/load factor)</li>
+        </ol>
+
+        <p>Ultimately, I'm not a graphic designer, so the visualizations may be limited or require some kind of plugin situation. I will have to figure that one out... Fortunately, the actual calculation part is straightforward and I plan to share all calculations/code/other materials as I create them!</p>
+
+        <p>Bonus for me as this project requires learning some web development. At this point, most likely that will require a separate site (since GitHub only allows static pages) and probably something hacked together with <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank">Flask</a> (or even a simple <a href="https://jupyter.org/" target="_blank">Jupyter notebook</a>) for starters.</p>
+
+        <p>Stay tuned...</p>
+
+        <p>Tailwinds!</p>
+
+        <p><strong>Update:</strong> Check out the <a href="calculator.html">Performance Calculator</a> page to see the result of this project!</p>
+
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Adam S. Goler. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

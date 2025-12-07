@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adding Basic TeX to GitHub Pages - Adam S. Goler, PhD">
+    <title>Adding TeX to GitHub Pages - Adam S. Goler, PhD</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .blog-article { max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.8; }
+        .blog-article h2, .blog-article h4 { margin-top: 2rem; }
+        .blog-article p { margin-bottom: 1.5rem; }
+        .blog-article pre { background: #f4f4f4; padding: 1rem; border-radius: 4px; overflow-x: auto; margin-bottom: 1.5rem; }
+        .blog-article code { background: #f4f4f4; padding: 0.2rem 0.4rem; border-radius: 3px; font-family: monospace; }
+        .blog-article ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .blog-article ol li { margin-bottom: 0.75rem; }
+        .blog-meta { color: #666; margin-bottom: 2rem; }
+        .back-link { margin-bottom: 2rem; display: inline-block; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Adam S. Goler, PhD</h1>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Adding Basic TeX to a Post in GitHub Pages</h2>
+            <p class="blog-meta">March 19, 2022 | Tags: Code, Help</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+
+        <p>Wondering if GitHub Pages/Jekyll supports \(\LaTeX\)? It does!</p>
+
+        <h4>What is \(\LaTeX\)?</h4>
+
+        <p>\(\LaTeX\) is an elegant language for typesetting and is particularly useful for mathematical expressions. It has a very straightforward and easy to learn process that will have you writing the most complex equations on a computer with ease in no time!</p>
+
+        <p>Initially, I was quite surprised to learn that GitHub Pages doesn't support \(\LaTeX\) typesetting out of the box (since GitLab does), but it turns out not to be terribly difficult to get working with a little tinkering. There are other ways to do this, by using TeX to image converters, etc, but I find these to be... not as elegant (nor as convenient) as writing TeX directly into markdown files.</p>
+
+        <p>In this case, I'm using <a href="https://www.mathjax.org" target="_blank">MathJax</a> and <a href="https://kramdown.gettalong.org" target="_blank">Kramdown</a>, which are compatible with <a href="https://jekyllrb.com" target="_blank">Jekyll</a>.</p>
+
+        <h4>How do I do this using Jekyll/GitHub Pages?</h4>
+
+        <p>Pretty simple, it turns out! You need to do the following...</p>
+
+        <ol>
+            <li>Specify "kramdown" in your <code>_config.yml</code> file:
+                <pre>markdown: kramdown</pre>
+            </li>
+            <li>Add the following script to the <code>_includes/head.html</code> file in your website repo directory before the <code>&lt;/head&gt;</code> tag:
+                <pre>&lt;script src="https://polyfill.io/v3/polyfill.min.js?features=es6"&gt;&lt;/script&gt;
+&lt;script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"&gt;&lt;/script&gt;</pre>
+            </li>
+            <li>Start writing! You can create an inline equation with dollar-sign tags, i.e. <code>$$x+4$$</code> will typeset as \(x+4\). Similarly, centered individual equations can be typeset as:
+                <pre>\begin{equation}
+x = \frac{-b^{2} \pm \sqrt{b^{2} - 4ac}}{2a}
+\end{equation}</pre>
+                which will typeset as:
+                \[x = \frac{-b^{2} \pm \sqrt{b^{2} - 4ac}}{2a}\]
+            </li>
+        </ol>
+
+        <p>And there you go! Happy typesetting!</p>
+
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Adam S. Goler. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

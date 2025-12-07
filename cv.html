@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV of Adam S. Goler, PhD - Physicist, Data Scientist, Flight Instructor">
+    <title>CV - Adam S. Goler, PhD</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .cv-section { margin-bottom: 3rem; }
+        .cv-section h3 { 
+            color: var(--primary-color); 
+            border-bottom: 1px solid var(--border-color); 
+            padding-bottom: 0.75rem; 
+            margin-bottom: 1.5rem; 
+        }
+        .cv-item { margin-bottom: 2rem; }
+        .cv-item h4 { margin-bottom: 0.25rem; color: var(--text-color); }
+        .cv-item .date { color: var(--text-muted); font-style: italic; font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
+        .cv-item ul { margin-top: 0.5rem; padding-left: 1.5rem; color: var(--text-light); }
+        .cv-item ul li { margin-bottom: 0.5rem; }
+        .social-links-cv { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        .social-links-cv a { 
+            color: var(--text-color); 
+            text-decoration: none; 
+            padding: 0.5rem 1rem; 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--radius); 
+            transition: all 0.3s; 
+            background: var(--card-bg);
+        }
+        .social-links-cv a:hover { 
+            border-color: var(--primary-color); 
+            color: var(--primary-color); 
+        }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .skill-tag { 
+            background: var(--bg-light); 
+            padding: 0.5rem 1rem; 
+            border-radius: 20px; 
+            font-size: 0.9rem; 
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Adam S. Goler, PhD</h1>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="cv.html" class="active">CV</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Curriculum Vitae</h2>
+            <p>Adam S. Goler</p>
+        </div>
+    </section>
+
+    <section class="cv-content" style="padding: 4rem 0;">
+        <div class="container" style="max-width: 900px;">
+            
+            <div class="social-links-cv">
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank">LinkedIn</a>
+                <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank">ResearchGate</a>
+                <a href="https://github.com/gol3tron" target="_blank">GitHub</a>
+                <a href="https://www.abcflight.school" target="_blank">CFI Website</a>
+                <a href="https://www.instagram.com/adam_goler_cfii/" target="_blank">CFI Instagram</a>
+            </div>
+
+            <div class="cv-section">
+                <h3>Key Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Leadership</span>
+                    <span class="skill-tag">Team Building</span>
+                    <span class="skill-tag">Teaching</span>
+                    <span class="skill-tag">Data-Driven Insights</span>
+                    <span class="skill-tag">Feature Engineering</span>
+                    <span class="skill-tag">Product Development</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h3>Employment History</h3>
+
+                <div class="cv-item">
+                    <h4>Flight Instructor - <a href="https://www.abcflight.school" target="_blank">ABC Flight Training LLC</a></h4>
+                    <p class="date">July 2022 - Present</p>
+                    <ul>
+                        <li>Conducted primary flight and ground instruction under 14 CFR Part 61 in various piston aircraft</li>
+                        <li>Provided flight reviews, aircraft checkouts, and instruction under the FAA Wings program</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Data Scientist / MLOps Engineer - <a href="https://www.savvyaviation.com" target="_blank">Savvy Aviation</a></h4>
+                    <p class="date">April 2022 - Present</p>
+                    <ul>
+                        <li>Developed machine learning models for piston aircraft maintenance using engine monitor data</li>
+                        <li>Lead developer for Failing Exhaust Valve Analytics (FEVA) and <a href="https://www.aopa.org/news-and-media/all-news/2025/july/pilot/savvy-maintenance-project-gadfly-update" target="_blank">Generalized Anomaly Detection (GADfly)</a> programs</li>
+                        <li>Supervised collaborative work with UC Davis Business Analytics Program</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>R&D Engineer - Pivotal Systems Corporation</h4>
+                    <p class="date">July 2017 - July 2022</p>
+                    <ul>
+                        <li>Technical program management of new products for critical industry applications</li>
+                        <li>Identified and guided suppliers in producing custom sensor and actuator solutions for next-generation products</li>
+                        <li>Built, developed, and lead cross functional teams in pursuit of aggressive prototype development and delivery schedules</li>
+                        <li>Expertise in specifying, testing, implementing piezoresistive pressure sensors, various thermal sensors, piezoceramic actuators, and signal conditioning with ADC/DAC systems</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Experimentation and Prototyping Manager - <a href="https://www.marforres.marines.mil/MIU/" target="_blank">Marine Innovation Unit</a></h4>
+                    <p class="date">March 2022 - Present</p>
+                    <ul>
+                        <li>Leverage technical expertise to test, explore, and evaluate new technologies in testing environments and exercises</li>
+                        <li>Research innovative technologies that may improve the MAGTF's capabilities in current and future operational environments</li>
+                        <li>Liaise with other government and non-government offices to leverage common efforts toward solving current and future technological challenges</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Team Member - MARFORCYBER Reserve Capture the Flag Team</h4>
+                    <p class="date">October 2021 - March 2022</p>
+                    <ul>
+                        <li>Competed in monthly CTF events</li>
+                        <li>CTF Team Name: <a href="https://ctftime.org/team/156276" target="_blank">BandOfBinaries</a></li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>S-6/Communications Platoon Commander - 6th Engineer Support Battalion</h4>
+                    <p class="date">June 2017 - August 2019</p>
+                    <ul>
+                        <li>Received Navy and Marine Corps Achievement Medal (2019) for superior performance in billet</li>
+                        <li>Advised battalion commander regarding best employment of wire/data/radio/cyber assets</li>
+                        <li>Engineered tactical communications networks for battlefield reliability and redundancy</li>
+                        <li>Lead, trained, and mentored a platoon of Marines</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Special Projects Officer - Marine Corps Communication-Electronics School</h4>
+                    <p class="date">June 2016 - January 2017</p>
+                    <ul>
+                        <li>Received a Letter of Appreciation for review/update of Basic Communications Officer Course curriculum for scientific accuracy</li>
+                        <li>Co-developer of 2nd place submission (Warfighting Category) for Marine Corps Mobile Application Challenge</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Graduate Teaching/Research Assistant - Washington State University</h4>
+                    <p class="date">August 2009 - May 2015</p>
+                </div>
+
+                <div class="cv-item">
+                    <h4><a href="https://www.american.edu/cas/faculty/ag2866a.cfm" target="_blank">Adjunct Faculty</a> - Department of Physics, American University</h4>
+                    <p class="date">May - August 2009</p>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h3>Publications</h3>
+                <div class="cv-item">
+                    <p><a href="https://pubmed.ncbi.nlm.nih.gov/25998277/" target="_blank">"Tracking individual membrane proteins and their biochemistry: The power of direct observation"</a></p>
+                    <p><a href="https://rex.libraries.wsu.edu/esploro/outputs/doctoral/Understanding-Molecular-Machines-Theoretical-and-Experimental/99900581530001842#metrics" target="_blank">"Understanding Molecular Machines: Theoretical and Experimental Approaches"</a></p>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h3>Education</h3>
+                <div class="cv-item">
+                    <h4>PhD, Physics</h4>
+                    <p>Washington State University, 2015</p>
+                </div>
+                <div class="cv-item">
+                    <h4>BS, Physics and Mathematics</h4>
+                    <p>American University, 2009</p>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h3>Other Skills and Interests</h3>
+                <ul>
+                    <li>Certified Flight Instructor, Airplane Single Engine Land, Instrument Airplane</li>
+                    <li>FAA First Class Medical</li>
+                    <li>Amateur Radio License (General Class)</li>
+                </ul>
+            </div>
+
+            <div class="cv-section">
+                <h3>Community Outreach</h3>
+                <div class="cv-item">
+                    <h4>Volunteer Dog Walker - <a href="https://foha.org/" target="_blank">Friends of Homeless Animals</a></h4>
+                    <p class="date">September 2015 - June 2016</p>
+                </div>
+                <div class="cv-item">
+                    <h4>Washington DC Student Ambassador - <a href="https://www.nasa.gov/home/hqnews/2008/nov/HQ_08-282_IYA_Ambassadors.html" target="_blank">NASA International Year of Astronomy</a></h4>
+                    <p class="date">August 2008 - August 2009</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Adam S. Goler. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+                <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank" aria-label="ResearchGate">ResearchGate</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
