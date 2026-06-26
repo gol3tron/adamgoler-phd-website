@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fractional Chief Science Officer - hands-on quantitative leadership and design coaching for teams building data, ML, and modeling-driven products. Adam S. Goler, PhD.">
+    <title>Fractional CSO — Adam S. Goler, PhD</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Editorial, text-forward layout for the services page */
+        .svc { padding: 6rem 0; }
+        .svc .container { max-width: 860px; }
+        .svc-narrow { max-width: 720px; }
+
+        .svc-hero { padding: 8rem 0 4rem; text-align: center; position: relative; overflow: hidden; }
+        .svc-hero h1 {
+            font-size: 3.25rem; line-height: 1.1; margin-bottom: 1.5rem;
+            background: linear-gradient(120deg, #ffffff 0%, #bae6fd 55%, #7dd3fc 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .svc-hero .sub { font-size: 1.35rem; color: var(--text-light); max-width: 680px; margin: 0 auto 2.5rem; line-height: 1.6; }
+        .svc-hero .sub strong { color: var(--text-color); font-weight: 600; }
+
+        .lede { font-size: 1.25rem; line-height: 1.7; color: var(--text-light); }
+        .lede strong { color: var(--text-color); font-weight: 600; }
+
+        .section-head { margin-bottom: 2.5rem; }
+        .section-head h2 { font-size: 2rem; }
+        .section-head p { font-size: 1.1rem; max-width: 640px; }
+
+        /* Fit / not-fit two-column */
+        .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .fit-col {
+            background-image: linear-gradient(160deg, var(--bg-lighter) 0%, var(--card-bg) 45%);
+            border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2rem;
+        }
+        .fit-col h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
+        .fit-col.yes { border-top: 3px solid #4ade80; }
+        .fit-col.no { border-top: 3px solid var(--text-muted); }
+        .fit-col ul { list-style: none; }
+        .fit-col li { padding: 0.6rem 0 0.6rem 1.75rem; position: relative; color: var(--text-light); border-bottom: 1px solid var(--border-color); }
+        .fit-col li:last-child { border-bottom: none; }
+        .fit-col.yes li::before { content: '✓'; position: absolute; left: 0; color: #4ade80; font-weight: 700; }
+        .fit-col.no li::before { content: '–'; position: absolute; left: 0; color: var(--text-muted); font-weight: 700; }
+
+        /* Responsibilities */
+        .resp { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .resp-item {
+            background-color: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: var(--radius); padding: 2rem; transition: var(--transition); position: relative; overflow: hidden;
+        }
+        .resp-item::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background-image: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+        }
+        .resp-item:hover { border-color: var(--primary-color); transform: translateY(-4px); }
+        .resp-item:hover::before { transform: scaleX(1); }
+        .resp-num { font-size: 0.85rem; font-weight: 700; color: var(--primary-color); letter-spacing: 0.05em; }
+        .resp-item h3 { font-size: 1.2rem; margin: 0.5rem 0 0.9rem; }
+        .resp-item ul { list-style: none; }
+        .resp-item li { padding: 0.3rem 0 0.3rem 1.25rem; position: relative; color: var(--text-light); font-size: 0.95rem; }
+        .resp-item li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); }
+
+        /* Ways to work together (engagement menu) */
+        .ways { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .way {
+            background-image: linear-gradient(160deg, var(--bg-lighter) 0%, var(--card-bg) 45%);
+            border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2rem;
+            transition: var(--transition); display: flex; flex-direction: column;
+        }
+        .way:hover { border-color: var(--primary-color); transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .way-tag { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-color); margin-bottom: 0.75rem; }
+        .way h3 { font-size: 1.35rem; margin-bottom: 0.75rem; }
+        .way p { color: var(--text-light); margin-bottom: 1rem; }
+        .way .who { margin-top: auto; font-size: 0.9rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 1rem; }
+        .way .who strong { color: var(--text-light); font-weight: 600; }
+
+        /* Timeline */
+        .timeline { list-style: none; position: relative; padding-left: 2.5rem; }
+        .timeline::before { content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background-image: linear-gradient(var(--primary-color), var(--accent-color)); }
+        .timeline li { position: relative; margin-bottom: 2rem; }
+        .timeline li::before {
+            content: ''; position: absolute; left: -2.5rem; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background-color: var(--bg-color); border: 2px solid var(--primary-color);
+        }
+        .timeline li::after {
+            content: ''; position: absolute; left: -2.5rem; top: 10px; left: -1.9rem; width: 8px; height: 8px;
+            border-radius: 50%; background-color: var(--primary-color);
+        }
+        .timeline h4 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+        .timeline p { color: var(--text-light); margin-bottom: 0; }
+
+        /* Model */
+        .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+        .model-grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .model-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2rem; }
+        .model-card h3 { font-size: 1.15rem; margin-bottom: 0.75rem; }
+        .model-card p { margin-bottom: 0; color: var(--text-light); }
+
+        /* Closing CTA */
+        .cta-close { text-align: center; background-color: rgba(30,41,59,0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .cta-close h2 { font-size: 2.25rem; margin-bottom: 1rem; }
+        .cta-close p { max-width: 620px; margin: 0 auto 2rem; font-size: 1.15rem; }
+
+        .mock-banner { background-image: linear-gradient(90deg, rgba(56,189,248,0.15), rgba(244,114,182,0.15)); border-bottom: 1px solid var(--border-color); text-align: center; padding: 0.6rem 1rem; font-size: 0.85rem; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .fit-grid, .resp, .model-grid, .model-grid-3, .ways { grid-template-columns: 1fr; }
+            .svc-hero h1 { font-size: 2.25rem; }
+            .svc { padding: 4rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mock-banner">⚙️ Draft mockup — “Fractional Chief Science Officer” concept page, not yet linked or published.</div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Adam S. Goler, PhD</h1>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="fractional.html" class="active">Fractional CSO</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero svc-hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge"><span class="dot"></span> Fractional Quantitative Leadership · CSO · CTO · Coaching</span>
+                <h1>Get the quantitative foundations right before bad assumptions get expensive.</h1>
+                <p class="sub">Hands-on, outcome-driven <strong>science and technical leadership</strong> for teams whose product lives or dies on getting the modeling, measurement, and machine learning right — from <em>first prototype</em> to <em>scaled team</em>.</p>
+                <div>
+                    <a href="#ways" class="btn btn-primary">See how we'd work together →</a>
+                    <a href="contact.html" class="btn btn-secondary">Request a conversation</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Philosophy -->
+    <section class="svc">
+        <div class="container svc-narrow">
+            <span class="eyebrow">The idea</span>
+            <h2>Quantitative decisions compound.</h2>
+            <p class="lede">The choice of model, the metric you optimize, the experiment you trust, the assumption you never tested — these decisions <strong>compound</strong> exactly like technical debt, except they're harder to see. A dashboard looks fine while the number underneath it quietly means nothing.</p>
+            <p class="lede">I'm a PhD physicist who has spent a decade turning messy, real-world data into systems people actually bet on — production ML across thousands of aircraft, LLM agents in daily use, and safety research where being <em>wrong</em> has consequences. A fractional CSO gives you that judgment embedded in your team, at the stage where it changes the trajectory — without a full-time hire.</p>
+        </div>
+    </section>
+
+    <!-- Fit / Not a fit -->
+    <section class="svc" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">Is this for you?</span>
+                <h2>Who this is for</h2>
+                <p>I'm deliberately selective — the engagement only works when the fit is real. Here's how to tell.</p>
+            </div>
+            <div class="fit-grid">
+                <div class="fit-col yes">
+                    <h3>✅ Strong fit</h3>
+                    <ul>
+                        <li>Your product's value depends on getting the math, modeling, or ML right.</li>
+                        <li>You have data but aren't sure you're drawing trustworthy conclusions from it.</li>
+                        <li>You need senior quantitative judgment — but not yet a full-time science hire.</li>
+                        <li>Your team can build; they need direction on methods, rigor, and evaluation.</li>
+                        <li>You want to grow quantitative capability in-house, not just buy a deliverable.</li>
+                    </ul>
+                </div>
+                <div class="fit-col no">
+                    <h3>🚫 Not a fit</h3>
+                    <ul>
+                        <li>You need a full-time engineering manager or pure delivery lead.</li>
+                        <li>You want someone to rubber-stamp decisions that are already made.</li>
+                        <li>The work has no real quantitative core — it's app plumbing and UI.</li>
+                        <li>You're shopping for the cheapest possible contractor hours.</li>
+                        <li>You need 40 hours a week of hands-on coding.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ways to work together -->
+    <section class="svc" id="ways">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">Ways to work together</span>
+                <h2>One discipline, four levels of support.</h2>
+                <p>Whether you need a second opinion, a coach for your team, or embedded leadership — it's the same quantitative judgment, sized to your stage.</p>
+            </div>
+            <div class="ways">
+                <div class="way">
+                    <span class="way-tag">Start here</span>
+                    <h3>Diagnostic</h3>
+                    <p>A short, paid deep-dive into your data, models, and methods. You get a clear map of where the quantitative risk and the highest-leverage wins actually are — and an honest read on whether deeper work is worth it.</p>
+                    <p class="who"><strong>Good for:</strong> any team that suspects its numbers, models, or ML aren't pulling their weight.</p>
+                </div>
+                <div class="way">
+                    <span class="way-tag">Advisory</span>
+                    <h3>Quantitative Design Coaching</h3>
+                    <p>Recurring coaching for you and your team — design and code review, experiment and metric design, and the <em>"is this actually real?"</em> rigor, taught rather than outsourced. I leave your team more capable than I found it.</p>
+                    <p class="who"><strong>Good for:</strong> teams that can execute but want sharper quantitative instincts.</p>
+                </div>
+                <div class="way">
+                    <span class="way-tag">Embedded</span>
+                    <h3>Fractional CSO / CTO</h3>
+                    <p>Part-time science and technical leadership inside your team. I own the quantitative direction — strategy, modeling, ML, evaluation — hands-on where it matters, on a predictable monthly rhythm.</p>
+                    <p class="who"><strong>Good for:</strong> companies that need senior leadership but not yet a full-time hire.</p>
+                </div>
+                <div class="way">
+                    <span class="way-tag">Intensive</span>
+                    <h3>Workshop / Project Sprint</h3>
+                    <p>A focused, fixed-scope engagement — an applied-AI workshop, a model or evaluation harness built end-to-end, or a specific quantitative problem solved and handed off with the team brought along.</p>
+                    <p class="who"><strong>Good for:</strong> a concrete problem you want solved <em>well</em>, on a deadline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core capabilities -->
+    <section class="svc" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">What I bring</span>
+                <h2>Where I add value</h2>
+                <p>Concrete work, not vague promises. Any engagement draws on some mix of the following.</p>
+            </div>
+            <div class="resp">
+                <div class="resp-item">
+                    <span class="resp-num">01</span>
+                    <h3>Quantitative Strategy &amp; Direction</h3>
+                    <ul>
+                        <li>Decide which problems are tractable and worth solving</li>
+                        <li>Set the modeling approach; make the build / buy / borrow calls</li>
+                        <li>Align technical bets with the business outcome</li>
+                    </ul>
+                </div>
+                <div class="resp-item">
+                    <span class="resp-num">02</span>
+                    <h3>Applied AI &amp; ML Leadership</h3>
+                    <ul>
+                        <li>Design ML and LLM systems that survive production</li>
+                        <li>Pick the right model class — and avoid over-engineering</li>
+                        <li>Hands-on prototyping to de-risk the hard parts early</li>
+                    </ul>
+                </div>
+                <div class="resp-item">
+                    <span class="resp-num">03</span>
+                    <h3>Experimentation &amp; Measurement</h3>
+                    <ul>
+                        <li>Design experiments and metrics that answer the real question</li>
+                        <li>A/B testing, causal thinking, and honest baselines</li>
+                        <li>Instrument what matters; ignore what doesn't</li>
+                    </ul>
+                </div>
+                <div class="resp-item">
+                    <span class="resp-num">04</span>
+                    <h3>Evaluation &amp; Rigor</h3>
+                    <ul>
+                        <li>The "is this actually real?" function for your team</li>
+                        <li>Build evaluation harnesses and stress-test claims</li>
+                        <li>Catch statistical pitfalls before they cost you</li>
+                    </ul>
+                </div>
+                <div class="resp-item">
+                    <span class="resp-num">05</span>
+                    <h3>Data Foundations</h3>
+                    <ul>
+                        <li>Get pipelines, features, and data quality trustworthy</li>
+                        <li>Make sure what's downstream can be believed</li>
+                        <li>Right-size the infrastructure to your stage</li>
+                    </ul>
+                </div>
+                <div class="resp-item">
+                    <span class="resp-num">06</span>
+                    <h3>Coaching &amp; Team Enablement</h3>
+                    <ul>
+                        <li>Level up your team's quantitative instincts</li>
+                        <li>Design and code review with a teaching mindset</li>
+                        <li>Leave the team more capable than I found it</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagement timeline -->
+    <section class="svc">
+        <div class="container svc-narrow">
+            <div class="section-head">
+                <span class="eyebrow">How it works</span>
+                <h2>The arc of an engagement</h2>
+                <p>Designed to add the most value early — and to work itself out of a job.</p>
+            </div>
+            <ul class="timeline">
+                <li>
+                    <h4>1 · Diagnostic</h4>
+                    <p>A short, paid engagement to map where you are, what you're building, and where the quantitative risk really sits. If it's not a fit, you'll know quickly.</p>
+                </li>
+                <li>
+                    <h4>2 · Foundations</h4>
+                    <p>Set direction and fix the highest-leverage gaps — the model, the metric, the evaluation, the data — so the things you build next stand on something solid.</p>
+                </li>
+                <li>
+                    <h4>3 · Embedded</h4>
+                    <p>Ongoing fractional involvement: a set rhythm each month, hands-on where it matters, a thought partner where it counts.</p>
+                </li>
+                <li>
+                    <h4>4 · Enablement</h4>
+                    <p>Build your team's capability — coach the people you have, and help you hire the ones you need.</p>
+                </li>
+                <li>
+                    <h4>5 · Transition</h4>
+                    <p>Hand off cleanly to a full-time science or technical leader when you're ready for one. A natural exit is the goal, not a surprise.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Engagement model -->
+    <section class="svc" style="background-color: var(--bg-light);">
+        <div class="container svc-narrow">
+            <span class="eyebrow">The model</span>
+            <h2>Aligned on outcomes — not billable hours.</h2>
+            <p class="lede">The goal is alignment, not maximizing short-term fees. Structure flexes to your stage:</p>
+            <div class="model-grid model-grid-3">
+                <div class="model-card">
+                    <h3>Retainer</h3>
+                    <p>A set number of days each month at a predictable rate. Best for funded teams that need senior quantitative judgment on a recurring basis.</p>
+                </div>
+                <div class="model-card">
+                    <h3>Cash + equity</h3>
+                    <p>For earlier-stage startups: a modest monthly cash component plus a meaningful equity stake that vests over time and milestones.</p>
+                </div>
+                <div class="model-card">
+                    <h3>Fixed-fee</h3>
+                    <p>For a diagnostic, workshop, or scoped sprint: a flat price for a defined outcome, agreed up front. No open-ended meters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="svc cta-close">
+        <div class="container">
+            <h2>Let's see if it's a fit.</h2>
+            <p>We'll walk through where you are, what you're building, and whether this is the right level of support for your stage. If it's not a fit, I'll tell you. No pressure, no pitch deck.</p>
+            <a href="contact.html" class="btn btn-primary">Request a conversation →</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Adam S. Goler, PhD. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+                <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank" aria-label="ResearchGate">ResearchGate</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
