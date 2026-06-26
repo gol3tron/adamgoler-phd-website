@@ -1,97 +1,81 @@
-# Adam Goler - PhD Portfolio Website
+# Adam S. Goler, PhD — Personal Website
 
-A professional portfolio website template for showcasing academic work, research projects, blog posts, and contact information.
+The personal and professional site of **Adam S. Goler, PhD** — independent data science,
+applied-AI, and quantitative-analysis consultant, and FAA Certified Flight Instructor.
 
-## Features
+🌐 **Live at [adamgoler.phd](https://adamgoler.phd)**
 
-- **Home Page**: Professional introduction with highlights and areas of expertise
-- **Portfolio**: Showcase of research projects and professional work
-- **Blog**: Platform for sharing thoughts, insights, and updates
-- **Contact**: Contact form with validation and contact information
-- **Responsive Design**: Mobile-friendly layout that works on all devices
-- **Modern UI**: Clean, professional design with smooth animations
-- **Interactive Elements**: Mobile navigation, form validation, and smooth scrolling
+A fast, dependency-free static site (HTML, CSS, vanilla JavaScript) hosted on GitHub Pages.
 
-## Getting Started
+## Pages
 
-### Prerequisites
+- **Home** (`index.html`) — Positioning and an overview of consulting services: data science &
+  applied AI, quantitative analysis & modeling, and flight instruction.
+- **Portfolio** (`portfolio.html`) — Selected work, including the *Chat with my Aircraft* LLM
+  assistant, the FEVA and GADfly production ML programs, the Performance Calculator, the
+  [CFI Compendium](https://gol3tron.github.io/cfi-compendium/), and published physics research.
+- **CV** (`cv.html`) — Full curriculum vitae: experience, categorized skills, publications, and
+  education.
+- **Performance Calculator** (`calculator.html`, `js/calculator.js`) — An interactive Cessna 172S
+  takeoff, climb, and cruise performance calculator built from POH data, as an aid to flight
+  instruction and planning.
+- **Blog** (`blog.html` + `blog-*.html`) — Writing on aviation, physics, and technology, with
+  MathJax-rendered derivations.
+- **Contact** (`contact.html`) — Contact form (via Getform) and links for consulting and flight
+  instruction inquiries.
 
-No build tools or dependencies required! This is a pure HTML, CSS, and JavaScript website.
+## Tech
 
-### Installation
+- HTML5, CSS3 (CSS Grid & Flexbox, design tokens via CSS custom properties in `styles.css`)
+- Vanilla JavaScript (ES6+) — `script.js` for site-wide interactivity (mobile nav, form
+  validation, smooth scrolling); `js/calculator.js` for the performance calculator
+- [MathJax](https://www.mathjax.org/) for typeset equations in blog posts
+- No frameworks, no build step
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/gol3tron/adamgoler-phd-website.git
-   cd adamgoler-phd-website
-   ```
+## Local development
 
-2. Open `index.html` in your web browser to view the website.
+No build tools required. Serve the folder with any static server:
 
-### Deployment
+```bash
+# Python
+python3 -m http.server 8000
 
-You can deploy this website to any static hosting service:
+# Node
+npx serve
+```
 
-- **GitHub Pages**: Push to GitHub and enable GitHub Pages in repository settings
-- **Netlify**: Drag and drop the folder to Netlify
-- **Vercel**: Import the repository to Vercel
-- **Any web server**: Upload all files to your web hosting server
+Then open <http://localhost:8000>. (Opening `index.html` directly in a browser also works.)
 
-## Customization
+## Deployment
 
-### Content
+The site is served by **GitHub Pages** from the `main` branch (root folder) and mapped to the
+custom domain **adamgoler.phd** via the `CNAME` file and DNS records pointing at GitHub Pages.
+Pushing to `main` publishes automatically.
 
-Edit the HTML files to customize content:
-- `index.html` - Home page content
-- `portfolio.html` - Add your projects and research
-- `blog.html` - Add your blog posts
-- `contact.html` - Update contact information
-
-### Styling
-
-Modify `styles.css` to change the appearance:
-- Color scheme is defined in CSS variables (`:root` section)
-- Adjust layouts, fonts, and spacing as needed
-
-### Functionality
-
-Update `script.js` for additional interactivity:
-- Form submission can be connected to a backend service
-- Add more animations or interactive features
-
-## File Structure
+## File structure
 
 ```
 adamgoler-phd-website/
-├── index.html          # Home page
-├── portfolio.html      # Portfolio page
-├── blog.html          # Blog listing page
-├── contact.html       # Contact page
-├── styles.css         # Main stylesheet
-├── script.js          # JavaScript functionality
-├── .gitignore         # Git ignore file
-└── README.md          # This file
+├── index.html              # Home
+├── portfolio.html          # Portfolio
+├── cv.html                 # Curriculum vitae
+├── calculator.html         # Cessna 172S performance calculator
+├── blog.html               # Blog index
+├── blog-*.html             # Individual blog posts
+├── contact.html            # Contact
+├── styles.css              # Site-wide styles
+├── script.js               # Site-wide JavaScript
+├── js/
+│   └── calculator.js       # Performance calculator logic
+├── CNAME                   # Custom domain (adamgoler.phd)
+└── README.md               # This file
 ```
-
-## Technologies Used
-
-- HTML5
-- CSS3 (with CSS Grid and Flexbox)
-- Vanilla JavaScript (ES6+)
-- No frameworks or build tools required
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
 
 ## License
 
-This project is open source and available for personal and commercial use.
+© Adam S. Goler. All rights reserved.
 
 ## Contact
 
-For questions or suggestions, please use the contact form on the website.
+Use the [contact form](https://adamgoler.phd/contact.html), or connect on
+[LinkedIn](https://www.linkedin.com/in/asgoler/).
