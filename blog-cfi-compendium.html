@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Introducing the CFI Compendium - an open-source, community-driven library of flight-training lesson plans. By Adam S. Goler, PhD.">
+    <title>The CFI Compendium - Adam S. Goler, PhD</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-article { max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.8; }
+        .blog-article h2, .blog-article h4 { margin-top: 2rem; }
+        .blog-article p { margin-bottom: 1.5rem; }
+        .blog-article ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .blog-article ul li { margin-bottom: 0.5rem; }
+        .blog-meta { color: #666; margin-bottom: 2rem; }
+        .back-link { margin-bottom: 2rem; display: inline-block; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Adam S. Goler, PhD</h1>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>The CFI Compendium: Open-Source Flight Training</h2>
+            <p class="blog-meta">June 25, 2026 | Tags: Aviation, CFI, Open Source</p>
+        </div>
+    </section>
+
+    <article class="blog-article">
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+
+        <p>I want to share a project that sits right at the intersection of two things I care about: teaching people to fly, and building things in the open. It's called the <a href="https://gol3tron.github.io/cfi-compendium/" target="_blank">CFI Compendium</a> &mdash; an open-source, community-driven library of flight-training lesson plans.</p>
+
+        <h4>The problem it solves</h4>
+
+        <p>If you've ever worked toward a certificate or rating, you know the curriculum landscape is fragmented. Good lesson plans exist, but they tend to live in a single instructor's binder, a flight school's internal materials, or behind a paywall. Each instructor reinvents the wheel, and the collective expertise of the instructing community rarely accumulates anywhere a student can actually reach it.</p>
+
+        <p>Open source solved this exact problem for software a long time ago. A single, version-controlled, community-vetted body of work tends to beat any one closed source, because every contributor's experience compounds into the same place. There's no reason flight-training curriculum should be any different.</p>
+
+        <h4>What it is</h4>
+
+        <p>The CFI Compendium is a growing collection of structured lesson plans &mdash; written in the familiar format every CFI knows: objective, elements, equipment, instructor and student actions, and completion standards, with references back to the FAA handbooks and the POH. The lessons are stored as plain Markdown in a GitHub repository and rendered through a fast, searchable static site, so you can read them in your browser or fork the whole thing for your own use.</p>
+
+        <p>The goals behind it are simple:</p>
+
+        <ul>
+            <li><strong>Free access</strong> &mdash; quality training material available to everyone, no paywall</li>
+            <li><strong>Collaborative improvement</strong> &mdash; instructors from different schools, regions, and aircraft contribute perspectives and refinements</li>
+            <li><strong>A living document</strong> &mdash; curriculum that evolves with regulation changes and better teaching methods, with every change tracked in version control</li>
+            <li><strong>Community credibility</strong> &mdash; material that gets more trustworthy the more eyes review it</li>
+        </ul>
+
+        <h4>Why I built it this way</h4>
+
+        <p>My day job is building software and machine-learning systems, so reaching for Git, Markdown, and a static site felt natural &mdash; but the deeper reason is that those tools enforce exactly the behaviors good curriculum needs: every edit is reviewable, every claim is attributable, and improvements are additive rather than overwriting someone's binder. It also keeps the barrier to contributing low: if you can write a lesson in a text file, you can contribute.</p>
+
+        <h4>How to get involved</h4>
+
+        <p>Whether you're a CFI, a designated examiner, an airline instructor, or a student pilot who spotted something that could be clearer, contributions are welcome. You can browse the lessons, open an issue, or submit a change directly on GitHub.</p>
+
+        <ul>
+            <li>Browse the site: <a href="https://gol3tron.github.io/cfi-compendium/" target="_blank">gol3tron.github.io/cfi-compendium</a></li>
+            <li>Contribute on GitHub: <a href="https://github.com/gol3tron/cfi-compendium" target="_blank">github.com/gol3tron/cfi-compendium</a></li>
+        </ul>
+
+        <p>As always, this is meant to <em>supplement</em> &mdash; not replace &mdash; formal flight training. Consult current FAA publications, your CFI, and applicable regulations for official guidance.</p>
+
+        <p>Tailwinds, and fly safe!</p>
+
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Adam S. Goler. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+                <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank" aria-label="ResearchGate">ResearchGate</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
