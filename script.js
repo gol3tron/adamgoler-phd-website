@@ -88,12 +88,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Form submission
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+
+        function showStatus(formStatus, type, message) {
+            if (!formStatus) return;
+            formStatus.className = 'form-status ' + type;
+            formStatus.textContent = message;
+            formStatus.style.display = 'block';
+        }
+
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             let isValid = true;
             const formStatus = document.getElementById('formStatus');
-            
+
             // Validate all fields
             formInputs.forEach(input => {
                 if (!validateField(input)) {
@@ -101,25 +110,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            if (isValid) {
-                // Simulate form submission
-                formStatus.className = 'form-status success';
-                formStatus.textContent = 'Thank you for your message! I will get back to you soon.';
-                
-                // Reset form
-                setTimeout(() => {
-                    contactForm.reset();
-                    formStatus.style.display = 'none';
-                }, 5000);
-            } else {
-                formStatus.className = 'form-status error';
-                formStatus.textContent = 'Please correct the errors above and try again.';
-                
-                // Hide error message after 5 seconds
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 5000);
+            if (!isValid) {
+                showStatus(formStatus, 'error', 'Please correct the errors above and try again.');
+                return;
             }
+
+            // Actually send the message to the form endpoint
+            const originalLabel = submitButton ? submitButton.textContent : '';
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+            }
+            showStatus(formStatus, 'pending', 'Sending your message...');
+
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { Accept: 'application/json' }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Request failed with status ' + response.status);
+                    }
+                    showStatus(formStatus, 'success', 'Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                })
+                .catch(() => {
+                    showStatus(formStatus, 'error', 'Something went wrong sending your message. Please email me directly or try again.');
+                })
+                .finally(() => {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalLabel;
+                    }
+                });
         });
     }
 
