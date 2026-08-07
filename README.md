@@ -11,8 +11,8 @@ A fast, dependency-free static site (HTML, CSS, vanilla JavaScript) hosted on Gi
 
 - **Home** (`index.html`) — Positioning and an overview of consulting services: data science &
   applied AI, quantitative analysis & modeling, and flight instruction.
-- **Portfolio** (`portfolio.html`) — Selected work, including the *Chat with my Aircraft* LLM
-  assistant, the FEVA and GADfly production ML programs, the Performance Calculator, the
+- **Portfolio** (`portfolio.html`, unlinked) — Selected work, including a production LLM
+  assistant, predictive-maintenance ML, the Performance Calculator, the
   [CFI Compendium](https://gol3tron.github.io/cfi-compendium/), and published physics research.
 - **CV** (`cv.html`) — Full curriculum vitae: experience, categorized skills, publications, and
   education.
