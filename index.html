@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Adam S. Goler, PhD - Independent data science, applied AI, and quantitative analysis consultant, and FAA Certified Flight Instructor.">
-    <title>Adam S. Goler, PhD | Data Science, Applied AI & Quantitative Consulting</title>
+    <meta name="description" content="Adam Goler — physicist, pilot, and flight instructor who builds machine learning for aviation safety. Projects, writing, and flight-planning tools.">
+    <title>Adam Goler, PhD | Physicist, Pilot, ML Engineer</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <h1>Adam S. Goler, PhD</h1>
+                <h1><a href="index.html">Adam Goler</a></h1>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -24,66 +24,217 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="portfolio.html">Projects</a></li>
+                <li><a href="calculator.html">Tools</a></li>
+                <li><a href="blog.html">Writing</a></li>
                 <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="container">
+        <div class="container hero-grid">
             <div class="hero-content">
-                <span class="badge"><span class="dot"></span> Available for consulting engagements</span>
-                <h2>Data Science, Applied AI & Quantitative Consulting</h2>
-                <p class="lead">I turn complex, messy data into decisions you can act on.</p>
-                <p>PhD physicist and applied-AI engineer. A decade building production machine learning, LLM agents, and quantitative models — systems that hold up under real-world scrutiny.</p>
-                <div style="margin-top: 2rem;">
-                    <a href="contact.html" class="btn btn-primary">Work With Me</a>
+                <span class="badge"><span class="dot"></span> Currently: machine learning for aviation safety</span>
+                <h2>Hi, I'm Adam.</h2>
+                <p class="lead">Physicist. Flight Instructor. Data Person. Dad. Helping others. Having fun.</p>
+                <p>This site is a little about me, what I'm interested in, and what I've been working on. Welcome!</p>
+                <div class="hero-actions">
+                    <a href="portfolio.html" class="btn btn-primary">See What I'm Building</a>
+                    <a href="calculator.html" class="btn btn-secondary">Flight Planning Tools</a>
                 </div>
             </div>
+            <figure class="photo-slot portrait">
+                <img src="images/me-cockpit-smile.jpg" alt="Adam grinning in the left seat, headset on, mid-flight" style="object-position: 30% center">
+            </figure>
         </div>
     </header>
 
     <section class="services bg-light">
         <div class="container">
             <div class="section-title">
-                <span class="eyebrow">What I Do</span>
-                <h2>How I Can Help</h2>
-                <p>Scientific rigor, applied to systems that have to work in production.</p>
+                <h2>What I'm Working On</h2>
+                <p>The day job, the side projects, and the stuff in between.</p>
             </div>
 
-            <div class="cards">
+            <div class="cards cards-two">
                 <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>Data Science & Applied AI</h3>
-                    <p>End-to-end machine learning and LLM systems — predictive models, anomaly detection, retrieval (RAG), and agentic assistants. Developing capabilities that drive value for customers.</p>
+                    <figure class="photo-slot">
+                        <img src="images/panel-twin.jpg" alt="Instrument panel of a twin in cruise, both props spinning" loading="lazy" style="object-position: center 70%">
+                    </figure>
+                    <p class="card-meta">Day job · Savvy Aviation</p>
+                    <h3>Catching engine problems early</h3>
+                    <p>Production ML and LLM systems that spot developing engine trouble in piston aircraft before it becomes a failure. 58,000+ reports across 7,400+ aircraft so far.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">📈</div>
-                    <h3>Quantitative Analysis & Modeling</h3>
-                    <p>Rigorous modeling of messy, real-world data. Bayesian and hierarchical models, survival analysis, and feature engineering on noisy sensor and time-series data. First-principles thinking from a physics background.</p>
+                    <figure class="photo-slot">
+                        <img src="images/strut-clouds.jpg" alt="Low sun over a sea of clouds, seen under a Cessna wing" loading="lazy">
+                    </figure>
+                    <p class="card-meta">Research · Savvy Aviation Foundation</p>
+                    <h3>What the accident record says</h3>
+                    <p>Using LLM classification and survival analysis on NTSB accident data. The goal: find the patterns that matter and turn them into safer flying.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">✈️</div>
-                    <h3>Flight Instruction</h3>
-                    <p>FAA Certified Flight Instructor (Instrument). Primary and instrument instruction, flight reviews, and checkouts under 14 CFR Part 61. Flight- and engine-data review to target each learner's weak points.</p>
+                    <figure class="photo-slot">
+                        <img src="images/fuel-sample.jpg" alt="Checking a fuel sample on preflight" loading="lazy" style="object-position: center 30%">
+                    </figure>
+                    <p class="card-meta">Open source</p>
+                    <h3>CFI Compendium</h3>
+                    <p>A free, community-built library of flight-training lesson plans. Searchable, written in Markdown, and open to pull requests from any instructor.</p>
+                    <a href="https://gol3tron.github.io/cfi-compendium/" target="_blank" rel="noopener" class="card-link">Visit the Compendium →</a>
+                </div>
+                <div class="card">
+                    <figure class="photo-slot">
+                        <img src="images/cockpit-mountains.jpg" alt="Looking over the cowling at snowy mountains" loading="lazy">
+                    </figure>
+                    <p class="card-meta">Tools</p>
+                    <h3>Flight planning calculators</h3>
+                    <p>Climb gradients, fuel, winds, and density altitude. Takeoff planners with briefing generators for the 172S and the 310Q, including engine-out numbers for the twin.</p>
+                    <a href="calculator.html" class="card-link">Open the tools →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="about">
+    <section class="blog-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recent Notes</h2>
+                <p>Mostly aviation. Usually some physics.</p>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-post">
+                    <div class="blog-post-header">
+                        <span class="blog-date">June 25, 2026</span>
+                        <h3><a href="blog-cfi-compendium.html">The CFI Compendium: Open-Source Flight Training</a></h3>
+                    </div>
+                    <div class="blog-post-content">
+                        <p>Why I started a free, community-driven library of lesson plans for flight instructors.</p>
+                        <a href="blog-cfi-compendium.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                <article class="blog-post">
+                    <div class="blog-post-header">
+                        <span class="blog-date">February 8, 2024</span>
+                        <h3><a href="blog-fifty-seventy-rule.html">A Better Approach to the 50-70 Rule</a></h3>
+                    </div>
+                    <div class="blog-post-content">
+                        <p>The common takeoff abort rule of thumb, and a better way to apply it in your briefing.</p>
+                        <a href="blog-fifty-seventy-rule.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                <article class="blog-post">
+                    <div class="blog-post-header">
+                        <span class="blog-date">March 13, 2022</span>
+                        <h3><a href="blog-pivotal-altitude.html">Physical Origins of the Pivotal Altitude</a></h3>
+                    </div>
+                    <div class="blog-post-content">
+                        <p>Where the eights-on-pylons number actually comes from, worked out from first principles.</p>
+                        <a href="blog-pivotal-altitude.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+            <div class="section-more">
+                <a href="blog.html" class="btn btn-secondary">All Writing</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Out the Window</h2>
+                <p>Mostly from the left seat. A few from the ground.</p>
+            </div>
+            <div class="photo-gallery">
+                <figure>
+                    <img src="images/me-taildragger.jpg" width="768" height="1024" alt="Adam leaning on a red-and-white taildragger" loading="lazy">
+                    <figcaption>Super Cub!</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/sf-peaks.jpg" width="1024" height="768" alt="The San Francisco Peaks under snow, north of Flagstaff" loading="lazy">
+                    <figcaption>San Francisco Peaks, AZ</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/f16.jpg" width="480" height="360" alt="Adam standing in front of an F-16 under a sunshade" loading="lazy">
+                    <figcaption>Luke AFB</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/red-rock.jpg" width="1200" height="900" alt="Red rock mesas and a small town under a Cessna wing strut" loading="lazy">
+                    <figcaption>Page, AZ</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/me-cockpit.jpg" width="480" height="360" alt="Adam flying above a cloud layer" loading="lazy">
+                    <figcaption>Approach into Carlsbad, CA</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/wing-clouds.jpg" width="1200" height="900" alt="A solid cloud deck seen past a white wing" loading="lazy">
+                    <figcaption>On top</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/c152.jpg" width="1200" height="900" alt="Adam next to a Cessna 152 on the ramp" loading="lazy">
+                    <figcaption>First Solo, Cleveland, OH</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/night-lights.jpg" width="1200" height="900" alt="A big city lit up at night from the air" loading="lazy">
+                    <figcaption>Hello Sky Harbor!</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/marines-trail.jpg" width="1200" height="900" alt="Adam in uniform next to a trail sign reading High Point 7,337 ft" loading="lazy">
+                    <figcaption>Bridgeport, CA</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/clouds-desert.jpg" width="1200" height="900" alt="Puffy clouds over the desert, seen past the cowling" loading="lazy">
+                    <figcaption>Cloud Surfing</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/ramp-handshake.jpg" width="900" height="1200" alt="Two pilots shaking hands in front of a Cessna 172" loading="lazy">
+                    <figcaption>Commercial Checkride</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/boneyard-747.jpg" width="900" height="1200" alt="A retired 747 parked nose-on in the desert" loading="lazy">
+                    <figcaption>Queen of the Skies!</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/ham-radio.jpg" width="675" height="1200" alt="A small portable ham radio set up on a picnic table" loading="lazy">
+                    <figcaption>Ham radio, off the grid</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/lowwing-clouds.jpg" width="480" height="360" alt="Rows of small clouds below a low wing" loading="lazy">
+                    <figcaption>Cloud Surfing</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/summit-climb.jpg" width="1200" height="900" alt="Four climbers on a snowy summit" loading="lazy">
+                    <figcaption>Mt Hood</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/haystack-rock.jpg" width="900" height="1200" alt="Haystack Rock on a cloudy afternoon at the beach" loading="lazy">
+                    <figcaption>Cannon Beach, OR</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/fuji.jpg" width="900" height="1200" alt="Mount Fuji framed by a window, with succulents on the sill" loading="lazy">
+                    <figcaption>Kofu, Japan</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/graz.jpg" width="1200" height="900" alt="Red rooftops and the clock tower in Graz, Austria" loading="lazy">
+                    <figcaption>Graz, Austria</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="about bg-light">
         <div class="container">
             <div class="about-content">
                 <div>
-                    <h2>About Me</h2>
-                    <p>Physicist by training, builder by practice. A decade taking technical systems from idea to production — most recently applied AI and machine learning in aviation.</p>
-                    <p>At <strong>Savvy Aviation</strong> I build production-grade, customer-facing ML and LLM systems for applications critical to aviation safety. They flag developing engine problems before failure and give operators grounded, checkable answers from messy data. As <strong>Director of the Savvy Aviation Foundation</strong>, I lead research applying LLM classification and survival analysis to NTSB accident data.</p>
-                    <p>I'm also a Major in the U.S. Marine Corps Reserve's <strong>Marine Innovation Unit</strong>, evaluating emerging technology, and an FAA <strong>Certified Flight Instructor</strong>. Physics PhD, semiconductor R&D, military leadership — a multidisciplinary lens on every problem.</p>
+                    <h2>A Bit About Me</h2>
+                    <p>I like learning, science, airplanes, spending time with my family, reading, and traveling. Did I mention airplanes?</p>
 
-                    <div style="margin-top: 2rem;">
-                        <a href="cv.html" class="btn btn-secondary">View Full CV</a>
+                    <div class="hero-actions">
+                        <a href="cv.html" class="btn btn-secondary">Full CV</a>
+                        <a href="contact.html" class="btn btn-secondary">Say Hello</a>
                     </div>
                 </div>
             </div>
@@ -92,7 +243,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Adam S. Goler, PhD. All rights reserved.</p>
+            <p>&copy; 2026 Adam S. Goler, PhD</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
                 <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>

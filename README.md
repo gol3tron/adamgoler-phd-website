@@ -1,7 +1,7 @@
 # Adam S. Goler, PhD — Personal Website
 
-The personal and professional site of **Adam S. Goler, PhD** — independent data science,
-applied-AI, and quantitative-analysis consultant, and FAA Certified Flight Instructor.
+The personal site of **Adam S. Goler, PhD**: physicist, pilot, flight instructor, and ML engineer.
+Projects, writing, and free flight-planning tools.
 
 🌐 **Live at [adamgoler.phd](https://adamgoler.phd)**
 
@@ -9,26 +9,31 @@ A fast, dependency-free static site (HTML, CSS, vanilla JavaScript) hosted on Gi
 
 ## Pages
 
-- **Home** (`index.html`) — Positioning and an overview of consulting services: data science &
-  applied AI, quantitative analysis & modeling, and flight instruction.
-- **Portfolio** (`portfolio.html`, unlinked) — Selected work, including a production LLM
-  assistant, predictive-maintenance ML, the Performance Calculator, the
-  [CFI Compendium](https://gol3tron.github.io/cfi-compendium/), and published physics research.
-- **CV** (`cv.html`) — Full curriculum vitae: experience, categorized skills, publications, and
-  education.
-- **Performance Calculator** (`calculator.html`, `js/calculator.js`) — An interactive Cessna 172S
-  takeoff, climb, and cruise performance calculator built from POH data, as an aid to flight
-  instruction and planning.
-- **Blog** (`blog.html` + `blog-*.html`) — Writing on aviation, physics, and technology, with
-  MathJax-rendered derivations.
-- **Contact** (`contact.html`) — Contact form (via Getform) and links for consulting and flight
-  instruction inquiries.
+- **Home** (`index.html`): who I am, what I'm working on now, recent writing, and a short about.
+- **Projects** (`portfolio.html`): things I've built, for work and for fun.
+- **Tools** (`calculator.html`, `js/tools.js`): general flight-planning calculators. Climb gradient
+  planner, gradient quick check, time/speed/distance, fuel, wind components, density altitude.
+- **Cessna 172S** (`c172s.html`, `js/calculator.js`, `js/c172s.js`): short-field takeoff and cruise
+  from POH data, with an abort checkpoint and a printable pre-takeoff briefing.
+- **Cessna 310Q** (`c310q.html`, `js/c310q.js`): takeoff planner with accelerate-stop margin,
+  single-engine climb gradient, and a printable takeoff briefing. POH chart values are entered by
+  the pilot.
+- **Writing** (`blog.html` + `blog-*.html`): aviation, physics, and code, with MathJax.
+- **CV** (`cv.html`): full curriculum vitae.
+- **Contact** (`contact.html`): contact form (via Getform).
+
+Every calculator has a short explainer covering what it answers, the math, and its limits.
+
+## Photos
+
+Photo spots are "slots" that show a labeled placeholder until a real photo exists.
+See [`images/README.md`](images/README.md) for the list of file names.
 
 ## Tech
 
 - HTML5, CSS3 (CSS Grid & Flexbox, design tokens via CSS custom properties in `styles.css`)
 - Vanilla JavaScript (ES6+) — `script.js` for site-wide interactivity (mobile nav, form
-  validation, smooth scrolling); `js/calculator.js` for the performance calculator
+  validation, smooth scrolling); `js/calculator.js`, `js/tools.js`, `js/c172s.js`, `js/c310q.js` for the calculators
 - [MathJax](https://www.mathjax.org/) for typeset equations in blog posts
 - No frameworks, no build step
 
@@ -57,16 +62,22 @@ Pushing to `main` publishes automatically.
 ```
 adamgoler-phd-website/
 ├── index.html              # Home
-├── portfolio.html          # Portfolio
+├── portfolio.html          # Projects
+├── calculator.html         # Tools hub (general calculators)
+├── c172s.html              # Cessna 172S takeoff + cruise, briefing
+├── c310q.html              # Cessna 310Q takeoff planner, briefing
+├── blog.html               # Writing index
+├── blog-*.html             # Individual posts
 ├── cv.html                 # Curriculum vitae
-├── calculator.html         # Cessna 172S performance calculator
-├── blog.html               # Blog index
-├── blog-*.html             # Individual blog posts
 ├── contact.html            # Contact
 ├── styles.css              # Site-wide styles
 ├── script.js               # Site-wide JavaScript
 ├── js/
-│   └── calculator.js       # Performance calculator logic
+│   ├── calculator.js       # 172S tables + climb gradient math
+│   ├── tools.js            # General calculators
+│   ├── c172s.js            # 172S margins + briefing
+│   └── c310q.js            # 310Q margins + briefing
+├── images/                 # Photos (see images/README.md)
 ├── CNAME                   # Custom domain (adamgoler.phd)
 └── README.md               # This file
 ```

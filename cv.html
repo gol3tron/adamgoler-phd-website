@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CV of Adam S. Goler, PhD - Data Scientist & Applied AI Engineer, Quantitative Consultant, and FAA Certified Flight Instructor">
+    <meta name="description" content="CV of Adam S. Goler, PhD: applied AI and data-science engineer, physicist, Marine Corps Reserve officer, and FAA Certified Flight Instructor">
     <title>CV - Adam S. Goler, PhD</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
@@ -55,7 +55,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <h1>Adam S. Goler, PhD</h1>
+                <h1><a href="index.html">Adam Goler</a></h1>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -64,8 +64,10 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Projects</a></li>
+                <li><a href="calculator.html">Tools</a></li>
+                <li><a href="blog.html">Writing</a></li>
                 <li><a href="cv.html" class="active">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -89,11 +91,11 @@
             </div>
 
             <p class="cv-intro">
-                Physicist (PhD) and Marine officer turned applied-AI and data-science engineer. A decade
-                building technical systems; 4+ years shipping production AI/ML. I build production-grade,
-                customer-facing LLM and ML systems for applications critical to aviation safety, and I own
-                features end-to-end from user research to production. Available for consulting in data
-                science, applied AI, and quantitative analysis — and for FAA-certified flight instruction.
+                Physicist (PhD) and Marine officer turned applied-AI and data-science engineer. I have spent
+                about nine years building technical systems, including 4+ years in production AI/ML. I build
+                production-grade, customer-facing ML and LLM systems for applications critical to aviation
+                safety. I own features end-to-end, from user research to production. I also teach flying as
+                a CFII.
             </p>
 
             <div class="cv-section">
@@ -103,12 +105,23 @@
                     <h4>Applied AI & LLM Tooling</h4>
                     <div class="skills-list">
                         <span class="skill-tag">LLM Agents & Assistants</span>
+                        <span class="skill-tag">Claude Code & Cursor</span>
                         <span class="skill-tag">OpenAI & Anthropic APIs</span>
                         <span class="skill-tag">Agentic Workflows</span>
-                        <span class="skill-tag">RAG (Hybrid + k-NN)</span>
-                        <span class="skill-tag">LLM-as-Judge Evaluation</span>
-                        <span class="skill-tag">Prompt & Context Engineering</span>
                         <span class="skill-tag">MCP Integrations</span>
+                        <span class="skill-tag">Tool & Skill Design</span>
+                        <span class="skill-tag">Prompt & Context Engineering</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Retrieval & Evaluation</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">RAG (OpenSearch Hybrid + k-NN)</span>
+                        <span class="skill-tag">Structured Outputs</span>
+                        <span class="skill-tag">LLM-as-Judge Evaluation</span>
+                        <span class="skill-tag">Golden-Question Harnesses</span>
+                        <span class="skill-tag">Text Classification</span>
                     </div>
                 </div>
 
@@ -118,10 +131,12 @@
                         <span class="skill-tag">Python (pandas, NumPy, SciPy)</span>
                         <span class="skill-tag">scikit-learn</span>
                         <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Deep Learning (TensorFlow/Keras, PyTorch, JAX)</span>
                         <span class="skill-tag">Anomaly Detection</span>
-                        <span class="skill-tag">Deep Learning (TensorFlow/Keras)</span>
+                        <span class="skill-tag">Computer Vision</span>
                         <span class="skill-tag">SHAP Explainability</span>
                         <span class="skill-tag">Time-Series Feature Engineering</span>
+                        <span class="skill-tag">OCR-to-Embeddings Pipelines</span>
                     </div>
                 </div>
 
@@ -137,10 +152,20 @@
                 </div>
 
                 <div class="skill-group">
-                    <h4>Orchestration, MLOps & Leadership</h4>
+                    <h4>Engineering Stack & MLOps</h4>
                     <div class="skills-list">
                         <span class="skill-tag">Temporal Workflows</span>
                         <span class="skill-tag">Model Deployment</span>
+                        <span class="skill-tag">Django & React</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Git & CI</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Practice & Leadership</h4>
+                    <div class="skills-list">
                         <span class="skill-tag">Composable System Design</span>
                         <span class="skill-tag">Technical Program Management</span>
                         <span class="skill-tag">Cross-Functional Leadership</span>
@@ -156,12 +181,16 @@
                     <h4>Software Engineer & Data Scientist (Applied AI / ML) - <a href="https://www.savvyaviation.com" target="_blank">Savvy Aviation</a></h4>
                     <p class="date">April 2022 - Present</p>
                     <ul>
-                        <li>Lead developer of production, customer-facing ML programs for applications critical to aviation safety, flagging developing mechanical issues before failure — <strong>58,000+ reports delivered across 7,400+ aircraft</strong> (~1,400/month)</li>
-                        <li>Designed the agentic tool suite for a production LLM assistant. Maintenance managers query any aircraft in plain English; the agent chains self-contained tools and cross-checks every answer against structured records</li>
-                        <li>Shipped a production LLM pipeline that scores likely failure modes from flight telemetry and drafts analyst reports, handing off to a human when uncertain</li>
-                        <li>Built the assistant's retrieval — OpenSearch hybrid keyword + vector search over an OCR→embeddings pipeline — plus an evaluation and feedback loop that cut inference cost <strong>~7×</strong> with no loss of fidelity</li>
-                        <li>Data wrangling and modeling on fleet-scale, messy sensor/time-series data (<strong>~6.8M flight hours</strong>) in Python (pandas, NumPy, SciPy, scikit-learn, TensorFlow/Keras) and SQL</li>
-                        <li>Supervised collaborative work with the UC Davis Business Analytics Program</li>
+                        <li>Lead developer of production-grade, customer-facing ML programs for applications critical to aviation safety. They flag developing engine problems before failure. They have delivered <strong>58,000+ reports across 7,400+ aircraft</strong> (about 1,400 per month)</li>
+                        <li>Designed the agentic tool suite for a production LLM assistant. Maintenance managers ask about any aircraft in plain English. The assistant chains self-contained tools and checks every answer against structured records</li>
+                        <li>Set the assistant's tool roadmap from real usage. Hand-labeled about 430 support tickets into 14 categories, then mapped the top needs to a <strong>17-tool set</strong></li>
+                        <li>Shipped a production LLM pipeline that scores likely failure modes from flight telemetry and drafts analyst reports. It hands off to a human when uncertain. It ran about 350 reviews across 290 aircraft in its first month</li>
+                        <li>Built the assistant's retrieval: OpenSearch hybrid keyword and vector search over an OCR-to-embeddings pipeline for invoices, logbooks, and ticket history</li>
+                        <li>Designed the evaluation and feedback loop, including an LLM-as-judge harness. Cut inference cost <strong>about sevenfold</strong> with no loss of fidelity</li>
+                        <li>Built an autonomous nightly Temporal workflow that sorts incoming questions into themes with an LLM, with no human triage</li>
+                        <li>Model fleet-scale, messy sensor and time-series data (<strong>about 6.8M flight hours</strong>) in Python and SQL. Work includes neural-network anomaly detection, SHAP-explained classifiers, and a borescope-image classifier trained on 9,000+ images</li>
+                        <li>Ran a statistical study of exhaust-valve failures across 676 engines. It corrected a widely cited industry estimate from 74% to 33.1% of engines with a distressed valve</li>
+                        <li>Ship features in the production app (Django, React, MySQL, Temporal, Docker). Supervised collaborative work with the UC Davis Business Analytics Program</li>
                     </ul>
                 </div>
 
@@ -169,18 +198,22 @@
                     <h4>Director - The Savvy Aviation Foundation (non-profit research)</h4>
                     <p class="date">2025 - Present</p>
                     <ul>
-                        <li>Direct a research initiative applying LLM classification to NTSB accident-causation analysis. The narrative classifier separates mechanical from non-mechanical causes at <strong>88% accuracy / 96% recall</strong> against NTSB coded findings, surfacing factors the official codes never captured</li>
-                        <li>Paired 16 years of NTSB records with ~6.8M flight hours of fleet engine-monitor data to compute among the first <strong>exposure-normalized GA maintenance-risk hazard rates</strong>. Classifier and dataset in prep for open publication</li>
+                        <li>Lead aviation safety research that applies AI to the NTSB accident database, focused on accident risk after maintenance</li>
+                        <li>Built an LLM classifier that sorted <strong>8,589 Part 91 accident reports (2008-2024)</strong> by cause. On a 100-event validation set it scored <strong>88% accuracy and 96% recall</strong> against NTSB coded findings. It found about <strong>40% more</strong> mechanical failures than the official codes captured</li>
+                        <li>Built the fleet-wide time-since-inspection exposure dataset from about 6.8M flight hours. Earlier published work said this data was unavailable</li>
+                        <li>Corrected a published study's method. Found a <strong>32% higher risk of mechanical failure</strong> in the first five flight hours after an inspection (relative risk 1.32, p &lt; 0.0001). Classifier and dataset are in prep for open publication</li>
                     </ul>
                 </div>
 
                 <div class="cv-item">
-                    <h4>Certified Flight Instructor (CFII) - <a href="https://www.abcflight.school" target="_blank">ABC Flight Training LLC</a></h4>
+                    <h4>Certified Flight Instructor (CFII) - <a href="https://www.abcflight.school" target="_blank">ABC Flight Training LLC</a> (owner) & Leighnor Aircraft, Prescott, AZ</h4>
                     <p class="date">July 2022 - Present</p>
                     <ul>
-                        <li>Commercial pilot (instrument); CFII with <strong>~930 total hours</strong> and <strong>~470 hours of instruction given</strong> across 25+ aircraft types</li>
-                        <li>Conduct primary flight and ground instruction under 14 CFR Part 61; flight reviews, aircraft checkouts, and FAA WINGS instruction</li>
-                        <li>Teach complex technical material to learners starting from zero, using flight- and engine-data review to target each learner's weak points</li>
+                        <li>Commercial pilot (instrument) and CFII with <strong>1,000+ total hours</strong>. Gave <strong>520 hours of flight instruction</strong> and 415 hours of ground instruction to 45 students, with 6 checkride passes</li>
+                        <li>Conduct flight reviews, instrument proficiency checks, mock checkrides, and FAA WINGS training. Validated 18 WINGS credits for 9 pilots</li>
+                        <li>Teach complex technical material to learners starting from zero. Use flight- and engine-data review to target each learner's weak points</li>
+                        <li>Wrote specifications for engine break-in procedures, oil selection, and diagnostic borescope imaging</li>
+                        <li>Aircraft owner since 2024 (1976 Rockwell Commander 114). Involved in its maintenance and diagnostics</li>
                     </ul>
                 </div>
 
@@ -188,10 +221,14 @@
                     <h4>R&D Engineer - Pivotal Systems Corporation</h4>
                     <p class="date">July 2017 - July 2022</p>
                     <ul>
-                        <li>Led technical program management for new products in critical semiconductor-manufacturing applications, owning prototype development and delivery against aggressive schedules</li>
-                        <li>Drove the design, testing, and integration of next-generation atomic layer deposition (ALD) systems for a semiconductor OEM, leading cross-functional teams across sensing and actuation subsystems</li>
+                        <li>Led development of mass flow controllers for next-generation semiconductor deposition processes</li>
+                        <li>Technical program manager across <strong>3 product lines</strong>. Built copy-exact supply chains that took them from prototype to high-volume production for semiconductor OEMs</li>
+                        <li>Lead program manager and key engineer on a <strong>multimillion-dollar joint development agreement</strong> with a major OEM</li>
+                        <li>Took a customer-exclusive product from feasibility study to development. Estimated sales value: <strong>$15-20M over five years</strong></li>
+                        <li>Drove design, testing, and integration of next-generation atomic layer deposition (ALD) systems for a semiconductor OEM</li>
                         <li>Guided manufacturing, process, and automation development for High Flow products that <strong>doubled manufacturing throughput in one year</strong></li>
-                        <li>Expertise specifying and testing piezoresistive pressure sensors, thermal sensors, piezoceramic actuators, and ADC/DAC signal conditioning</li>
+                        <li>Co-chair, Heater Jacket Task Force, SEMI Standards (2021-2022)</li>
+                        <li>Specified and tested piezoresistive pressure sensors, thermal sensors, piezoceramic actuators, switching power supplies, and ADC/DAC signal conditioning</li>
                     </ul>
                 </div>
 
@@ -199,9 +236,9 @@
                     <h4>Experimentation & Prototyping Manager - <a href="https://www.marforres.marines.mil/MIU/" target="_blank">Marine Innovation Unit</a>, USMC Reserve (Major)</h4>
                     <p class="date">March 2022 - Present</p>
                     <ul>
-                        <li>Member of the unit's AI detachment, delivering AI solutions to the Marine Corps at scale</li>
+                        <li>Founding (plank-holder) member of the unit. Member of its AI detachment, delivering AI solutions to the Marine Corps at scale</li>
+                        <li>Advise on modernization in artificial intelligence, training, and education</li>
                         <li>Evaluate emerging technologies in operational test environments against current and future requirements, often with no established baseline</li>
-                        <li>Develop project initiatives and concepts to improve MAGTF capabilities; liaise with government and non-government offices on shared technical challenges</li>
                     </ul>
                 </div>
 
@@ -209,9 +246,11 @@
                     <h4>Earlier U.S. Marine Corps Service (Communications / Cyber)</h4>
                     <p class="date">2015 - 2022</p>
                     <ul>
-                        <li><strong>MARFORCYBER Reserve Capture-the-Flag Team</strong> (2021–2022) — competed monthly in cyber CTF events (team <a href="https://ctftime.org/team/156276" target="_blank">BandOfBinaries</a>)</li>
-                        <li><strong>S-6 / Communications Platoon Commander, 6th Engineer Support Battalion</strong> (2017–2019) — planned and operated tactical networks; led and mentored a platoon. <em>Navy &amp; Marine Corps Achievement Medal (2019)</em></li>
-                        <li><strong>Special Projects Officer, Communication-Electronics School</strong> (2016–2017) — Letter of Appreciation for curriculum review; co-developer of 2nd-place (Warfighting) Marine Corps Mobile Application Challenge submission</li>
+                        <li><strong>Associate Duty, Marine Forces Cyber Command</strong> (2021-2022). Competed monthly in cyber Capture-the-Flag events (team <a href="https://ctftime.org/team/156276" target="_blank">BandOfBinaries</a>)</li>
+                        <li><strong>Expeditionary Warfare School</strong> (2019-2021). Resident professional military education</li>
+                        <li><strong>S-6 / Communications Platoon Commander, 6th Engineer Support Battalion</strong> (2017-2019). Led a platoon of about 30 Marines in the largest battalion in the Marine Corps. Planned and ran tactical networks. <em>Navy &amp; Marine Corps Achievement Medal (2019)</em></li>
+                        <li><strong>Special Projects Officer, Communication-Electronics School</strong> (2016-2017). Letter of Appreciation for a curriculum review. Co-developed the 2nd-place (Warfighting) entry in the 2017 Marine Corps Mobile Application Challenge. Meritorious Mast and Harris Hawk Teamwork Award</li>
+                        <li>Commissioned 2015. Graduated the Basic Communications Officer Course 2nd of 78 and The Basic School in the top 10% of 264</li>
                     </ul>
                 </div>
 
@@ -220,16 +259,25 @@
                     <p class="date">August 2009 - May 2015</p>
                     <ul>
                         <li>Co-developed a novel super-resolution fluorescence microscopy method (still in use by the lab) to study binding allostery in ligand-gated ion channels</li>
-                        <li>Ran all-atom molecular dynamics simulations of HIV-1 reverse transcriptase on an HPC cluster; heavy use of numerical optimization, linear algebra, and ODE/PDE methods</li>
-                        <li>Contributed to published collaborative research with groups in the US, UK, and Switzerland; presented at regional, national, and international conferences</li>
+                        <li>Ran all-atom molecular dynamics simulations of HIV-1 reverse transcriptase on an HPC cluster. Heavy use of numerical optimization, linear algebra, and ODE/PDE methods</li>
+                        <li>Contributed to published collaborative research with groups in the US, UK, and Switzerland. Presented at regional, national, and international conferences</li>
+                        <li>Taught physics, physical chemistry, and astronomy labs for classes of up to 250 students</li>
                     </ul>
                 </div>
 
                 <div class="cv-item">
-                    <h4><a href="https://www.american.edu/cas/faculty/ag2866a.cfm" target="_blank">Adjunct Instructor</a> - Department of Physics, American University</h4>
+                    <h4><a href="https://www.american.edu/cas/faculty/ag2866a.cfm" target="_blank">Adjunct Instructor & Undergraduate Lab Director</a> - Department of Physics, American University</h4>
                     <p class="date">May - August 2009</p>
                     <ul>
-                        <li>Instructed both sessions of calculus-based summer physics courses; designed and graded all pre-lab quizzes and lab worksheets with minimal oversight</li>
+                        <li>Taught both sessions of calculus-based summer physics labs. Designed and graded all pre-lab quizzes and lab worksheets with minimal oversight</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Perl Scripter - Imaging Science & Information Systems Center, Georgetown University</h4>
+                    <p class="date">Spring 2007</p>
+                    <ul>
+                        <li>Adapted Perl regex scripts that scanned global news sites to monitor biological threats</li>
                     </ul>
                 </div>
             </div>
@@ -238,7 +286,7 @@
                 <h3>Publications</h3>
                 <div class="cv-item">
                     <p>A. O. Barden, <strong>A. S. Goler</strong>, et al., <a href="https://pubmed.ncbi.nlm.nih.gov/25998277/" target="_blank">"Tracking Individual Membrane Proteins and Their Biochemistry: The Power of Direct Observation,"</a> <em>Neuropharmacology</em>, 2015.</p>
-                    <p><strong>A. S. Goler</strong>, <a href="https://rex.libraries.wsu.edu/esploro/outputs/doctoral/Understanding-Molecular-Machines-Theoretical-and-Experimental/99900581530001842#metrics" target="_blank">"Understanding Molecular Machines: Theoretical and Experimental Approaches,"</a> doctoral dissertation, ProQuest #3715214, 2015.</p>
+                    <p><strong>A. S. Goler</strong>, <a href="https://rex.libraries.wsu.edu/esploro/outputs/doctoral/Understanding-Molecular-Machines-Theoretical-and-Experimental/99900581530001842#metrics" target="_blank">"Understanding Molecular Machines: Theoretical and Experimental Approaches,"</a> doctoral dissertation, Washington State University, ProQuest #3715214, 2015.</p>
                 </div>
             </div>
 
@@ -248,7 +296,7 @@
                     <h4>Ph.D., Physics</h4>
                     <p class="date">Washington State University, 2015</p>
                     <ul>
-                        <li>Primary research in molecular biophysics; twice awarded the NSF GAANN Fellowship (2009, 2011)</li>
+                        <li>Primary research in molecular biophysics. Twice awarded the NSF GAANN Fellowship (2009, 2011)</li>
                         <li>Claire and William Band Scholarship for Achievement in Theoretical Physics</li>
                     </ul>
                 </div>
@@ -259,21 +307,31 @@
                         <li>Summer research in quantum information theory and astrophysical fluids</li>
                     </ul>
                 </div>
+                <div class="cv-item">
+                    <h4>Arizona Certified Teacher</h4>
+                    <p class="date">Physics, grades 6-12, 2026</p>
+                </div>
             </div>
 
             <div class="cv-section">
-                <h3>Certifications, Skills & Interests</h3>
+                <h3>Certifications, Projects & Memberships</h3>
                 <ul>
-                    <li>FAA Certified Flight Instructor — Airplane Single-Engine Land, Instrument Airplane (CFII)</li>
-                    <li>FAA Commercial Pilot, Instrument rating; First Class Medical</li>
-                    <li>Open-source scientific Python on GitHub (<a href="https://github.com/gol3tron" target="_blank">gol3tron</a>) — including <strong>FeyPy</strong> (nonlinear-optics Feynman diagrams)</li>
+                    <li>FAA Certified Flight Instructor: Airplane Single-Engine Land, Instrument Airplane (CFII)</li>
+                    <li>FAA Advanced Ground Instructor (AGI) and Instrument Ground Instructor (IGI)</li>
+                    <li>FAA Commercial Pilot, Airplane Single-Engine Land, Instrument rating; First Class Medical</li>
+                    <li>Open-source scientific Python on GitHub (<a href="https://github.com/gol3tron" target="_blank">gol3tron</a>), including <strong>FeyPy</strong> (nonlinear-optics Feynman diagrams) and radial pair-distribution analysis</li>
                     <li>Creator of the <a href="https://gol3tron.github.io/cfi-compendium/" target="_blank">CFI Compendium</a>, an open-source flight-training resource</li>
-                    <li>Amateur Radio License (General Class)</li>
+                    <li>Member, National Association of Flight Instructors (NAFI), 2022 - Present</li>
+                    <li>Amateur Radio License (General Class); ARRL member since 2018</li>
                 </ul>
             </div>
 
             <div class="cv-section">
                 <h3>Community Outreach</h3>
+                <div class="cv-item">
+                    <h4>Classroom Volunteer - Elementary School, Prescott, AZ</h4>
+                    <p class="date">October 2026 - Present</p>
+                </div>
                 <div class="cv-item">
                     <h4>Volunteer Dog Walker - <a href="https://foha.org/" target="_blank">Friends of Homeless Animals</a></h4>
                     <p class="date">September 2015 - June 2016</p>
@@ -281,6 +339,9 @@
                 <div class="cv-item">
                     <h4>Washington DC Student Ambassador - <a href="https://www.nasa.gov/home/hqnews/2008/nov/HQ_08-282_IYA_Ambassadors.html" target="_blank">NASA International Year of Astronomy</a></h4>
                     <p class="date">August 2008 - August 2009</p>
+                    <ul>
+                        <li>Sole DC representative. Ran physics outreach in urban schools and judged science fairs</li>
+                    </ul>
                 </div>
             </div>
 

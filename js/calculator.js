@@ -242,8 +242,13 @@ const Calculator = {
         const windMod = this.getWindRunwayModifier(runwayHeading, windSpeed, windDirection);
         const grassMod = this.getGrassModifier(isGrass);
         
-        groundRoll *= windMod * grassMod;
-        dist50ft *= windMod * grassMod;
+        // POH notes: wind correction applies to both distances.
+        // Grass adds 15% of the ground roll figure to both distances.
+        groundRoll *= windMod;
+        dist50ft *= windMod;
+        const grassAdd = (grassMod - 1) * groundRoll;
+        groundRoll += grassAdd;
+        dist50ft += grassAdd;
         
         // Speeds
         // lift_off_index is mapped to weight_index
@@ -294,24 +299,19 @@ Calculator.calculateClimbGradient = function(params) {
         startHeading, endHeading, altimeter
     } = params;
 
+    const empty = { maxTas: 0, maxGs: 0, minGradient: 0, avgGradient: 0, timeMin: 0, distanceNm: 0, worstAlt: 0, segments: [] };
     const altitudeChange = endAlt - startAlt;
-    if (altitudeChange <= 0) return { maxTas: 0, maxGs: 0, minGradient: 0 };
+    if (!(altitudeChange > 0)) return empty;
 
+    // Sample the climb in 500 ft slices
     const sampleInterval = 500;
-    let currentAlt = startAlt;
     const sampleAltitudes = [];
-    while (currentAlt <= endAlt) {
-        sampleAltitudes.push(currentAlt);
-        currentAlt += sampleInterval;
-    }
-    if (sampleAltitudes[sampleAltitudes.length - 1] !== endAlt) {
-        sampleAltitudes.push(endAlt);
-    }
+    for (let a = startAlt; a < endAlt; a += sampleInterval) sampleAltitudes.push(a);
+    sampleAltitudes.push(endAlt);
 
-    let maxTas = 0;
-    let maxGs = 0;
-    let totalTime = 0;
-    let totalDistance = 0;
+    let maxTas = 0, maxGs = 0, totalTime = 0, totalDistance = 0;
+    let minGradient = Infinity, worstAlt = startAlt;
+    const segments = [];
 
     for (let i = 0; i < sampleAltitudes.length - 1; i++) {
         const alt = sampleAltitudes[i];
@@ -319,41 +319,64 @@ Calculator.calculateClimbGradient = function(params) {
         const segmentAltChange = nextAlt - alt;
         const avgAlt = (alt + nextAlt) / 2;
 
-        // Interpolate parameters
         const climbRate = this.interpolateParameter(startAlt, endAlt, avgAlt, startClimbRate, endClimbRate);
         const temp = this.interpolateParameter(startAlt, endAlt, avgAlt, startTemp, endTemp);
-        const windDir = this.interpolateParameter(startAlt, endAlt, avgAlt, startWindDir, endWindDir);
+        const windDir = this.interpolateAngle(startAlt, endAlt, avgAlt, startWindDir, endWindDir);
         const windSpeed = this.interpolateParameter(startAlt, endAlt, avgAlt, startWindSpeed, endWindSpeed);
-        
-        // Heading interpolation (circular)
-        let headingDiff = (endHeading - startHeading) % 360;
-        if (headingDiff > 180) headingDiff -= 360;
-        else if (headingDiff < -180) headingDiff += 360;
-        
-        const heading = (startHeading + this.interpolateParameter(startAlt, endAlt, avgAlt, 0, headingDiff) + 360) % 360;
+        const heading = this.interpolateAngle(startAlt, endAlt, avgAlt, startHeading, endHeading);
 
         const pressureAlt = this.getPressureAltitude(altimeter, avgAlt);
         const tas = this.getTrueAirspeed(indicatedAirspeed, pressureAlt, temp);
-        maxTas = Math.max(maxTas, tas);
-
         const gs = this.getGroundSpeed(tas, heading, windDir, windSpeed);
+        maxTas = Math.max(maxTas, tas);
         maxGs = Math.max(maxGs, gs);
 
-        if (climbRate > 0) {
+        if (climbRate > 0 && gs > 0) {
+            // ft/nm = (ft/min) / (nm/min)
+            const gradient = climbRate / (gs / 60);
             const segmentTime = segmentAltChange / climbRate; // minutes
-            const segmentDistance = (gs / 60) * segmentTime; // nm
             totalTime += segmentTime;
-            totalDistance += segmentDistance;
+            totalDistance += (gs / 60) * segmentTime; // nm
+            if (gradient < minGradient) { minGradient = gradient; worstAlt = avgAlt; }
+            segments.push({ alt: Math.round(avgAlt), tas: Math.round(tas), gs: Math.round(gs), rate: Math.round(climbRate), gradient: Math.round(gradient) });
         }
     }
 
-    const minGradient = totalDistance > 0 ? altitudeChange / totalDistance : 0;
+    if (!isFinite(minGradient)) return empty;
 
     return {
         maxTas: Math.round(maxTas * 10) / 10,
         maxGs: Math.round(maxGs * 10) / 10,
-        minGradient: Math.round(minGradient)
+        minGradient: Math.round(minGradient),
+        avgGradient: totalDistance > 0 ? Math.round(altitudeChange / totalDistance) : 0,
+        timeMin: Math.round(totalTime * 10) / 10,
+        distanceNm: Math.round(totalDistance * 10) / 10,
+        worstAlt: Math.round(worstAlt),
+        segments
     };
+};
+
+// Interpolate an angle (degrees) along the shortest way around the circle
+Calculator.interpolateAngle = function(startAlt, endAlt, currentAlt, startDeg, endDeg) {
+    let diff = (endDeg - startDeg) % 360;
+    if (diff > 180) diff -= 360;
+    else if (diff < -180) diff += 360;
+    const val = startDeg + this.interpolateParameter(startAlt, endAlt, currentAlt, 0, diff);
+    return ((val % 360) + 360) % 360;
+};
+
+// Quick conversions between climb rate, groundspeed, and gradient
+Calculator.gradientFromRate = function(fpm, gs) {
+    if (!(gs > 0)) return 0;
+    return fpm / (gs / 60); // ft/nm
+};
+
+Calculator.rateFromGradient = function(ftPerNm, gs) {
+    return ftPerNm * gs / 60; // fpm
+};
+
+Calculator.gradientToPercent = function(ftPerNm) {
+    return ftPerNm / 6076.12 * 100;
 };
 
 Calculator.interpolateParameter = function(startAlt, endAlt, currentAlt, startVal, endVal) {
