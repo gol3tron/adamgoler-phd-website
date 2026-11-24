@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Adam S. Goler's research and projects">
-    <title>Portfolio - Adam S. Goler, PhD</title>
+    <meta name="description" content="Things Adam Goler has built: ML for aviation safety, flight planning tools, open-source lesson plans, and physics research.">
+    <title>Projects - Adam Goler</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <h1>Adam S. Goler, PhD</h1>
+                <h1><a href="index.html">Adam Goler</a></h1>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -24,8 +24,10 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html" class="active">Projects</a></li>
+                <li><a href="calculator.html">Tools</a></li>
+                <li><a href="blog.html">Writing</a></li>
                 <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -33,9 +35,9 @@
 
     <section class="page-header">
         <div class="container">
-            <span class="eyebrow">Selected Work</span>
-            <h2>Portfolio</h2>
-            <p>Research, projects, and professional work</p>
+            <span class="eyebrow">Projects</span>
+            <h2>Stuff and Things</h2>
+            <p>Some for work, some for fun, some for my students.</p>
         </div>
     </section>
 
@@ -44,9 +46,6 @@
             <div class="portfolio-grid">
 
                 <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">🤖</div>
-                    </div>
                     <div class="portfolio-details">
                         <h3>Production LLM Assistant</h3>
                         <p class="portfolio-category">Applied AI / LLM Agents</p>
@@ -65,9 +64,9 @@
                 </article>
 
                 <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">🛩️</div>
-                    </div>
+                    <figure class="photo-slot">
+                        <img src="images/panel-twin.jpg" alt="Instrument panel of a twin, engine gauges on the right" loading="lazy" style="object-position: center 70%">
+                    </figure>
                     <div class="portfolio-details">
                         <h3>Predictive Maintenance ML</h3>
                         <p class="portfolio-category">Machine Learning / Aviation Safety</p>
@@ -86,29 +85,30 @@
                 </article>
 
                 <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">✈️</div>
-                    </div>
+                    <figure class="photo-slot">
+                        <img src="images/cockpit-mountains.jpg" alt="Looking over the cowling at snowy mountains" loading="lazy">
+                    </figure>
                     <div class="portfolio-details">
-                        <h3>Performance Calculator</h3>
-                        <p class="portfolio-category">Aviation Tool</p>
+                        <h3>Flight Planning Tools</h3>
+                        <p class="portfolio-category">Aviation · Side project</p>
                         <p>
-                            A web-based Cessna 172S performance calculator for takeoff, climb, and cruise calculations. 
-                            Built as an aid to flight instruction and planning, using POH data with interpolation.
+                            Started as a Python script while I studied for my CFI. Now it's a set of browser
+                            calculators: climb gradient, fuel, winds, and density altitude. It has takeoff planners for the
+                            172S and the 310Q, with engine-out margins and a briefing you can print.
                         </p>
                         <div class="portfolio-tags">
                             <span class="tag">Web App</span>
                             <span class="tag">Aviation</span>
                             <span class="tag">JavaScript</span>
                         </div>
-                        <a href="calculator.html" class="btn btn-secondary" style="margin-top: 1rem;">Try It →</a>
+                        <a href="calculator.html" class="btn btn-secondary" style="margin-top: 1rem;">Try Them →</a>
                     </div>
                 </article>
 
                 <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">📚</div>
-                    </div>
+                    <figure class="photo-slot">
+                        <img src="images/fuel-sample.jpg" alt="Checking a fuel sample on preflight" loading="lazy" style="object-position: center 30%">
+                    </figure>
                     <div class="portfolio-details">
                         <h3>CFI Compendium</h3>
                         <p class="portfolio-category">Open-Source Aviation Education</p>
@@ -128,9 +128,6 @@
                 </article>
 
                 <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">🔬</div>
-                    </div>
                     <div class="portfolio-details">
                         <h3>Understanding Molecular Machines</h3>
                         <p class="portfolio-category">PhD Dissertation</p>
@@ -148,9 +145,6 @@
                 </article>
 
                 <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">📡</div>
-                    </div>
                     <div class="portfolio-details">
                         <h3>Marine Innovation Unit Projects</h3>
                         <p class="portfolio-category">Defense Technology</p>
@@ -168,9 +162,6 @@
                 </article>
 
                 <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="placeholder-image">🧬</div>
-                    </div>
                     <div class="portfolio-details">
                         <h3>Membrane Protein Tracking</h3>
                         <p class="portfolio-category">Published Research</p>

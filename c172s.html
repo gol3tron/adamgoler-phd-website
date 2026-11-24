@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cessna 172S takeoff and cruise performance calculator by Adam S. Goler, PhD - a flight-instruction tool built from POH data.">
+    <title>Cessna 172S Performance - Adam Goler</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="index.html">Adam Goler</a></h1>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Projects</a></li>
+                <li><a href="calculator.html" class="active">Tools</a></li>
+                <li><a href="blog.html">Writing</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding: 4rem 0; min-height: auto;">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Cessna 172S Performance Calculator</h2>
+                <p>Takeoff and cruise numbers, interpolated from the POH charts. <a href="calculator.html">← All tools</a></p>
+            </div>
+        </div>
+    </header>
+
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calc-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="switchTab('takeoff')">Takeoff</div>
+                    
+                    <div class="tab" onclick="switchTab('cruise')">Cruise</div>
+                </div>
+
+                <!-- Takeoff Form -->
+                <div id="takeoff" class="tab-content active">
+                    <div class="explainer">
+                        <p><strong>What this answers:</strong> How much runway you need to lift off, and to clear a 50 ft obstacle, in a Cessna 172S using the short-field technique (flaps 10°).</p>
+                        <details>
+                            <summary>How it works</summary>
+                            <p>The calculator turns your altimeter setting and field elevation into pressure altitude: <code>PA = elevation + (29.92 − altimeter) × 1000</code>. It then interpolates the POH short-field takeoff chart across weight, temperature, and pressure altitude.</p>
+                            <p>It applies the POH corrections. Headwind: subtract 10% for every 9 knots. Tailwind: add 10% for every 2 knots. Grass: add 15% of the ground roll figure to both distances.</p>
+                            <p><strong>Limits:</strong> The chart assumes a paved, level, dry runway, full power, and good technique. It does not cover runway slope or contamination. Outside the chart's range (2200–2550 lb, 0–40 °C, 0–8000 ft PA) the numbers are clamped to the nearest edge, so treat them with suspicion. Real airplanes and real pilots rarely match the book. Add a margin.</p>
+                        </details>
+                    </div>
+                    <form id="takeoffForm">
+                        <div class="form-group">
+                            <label>Aircraft Weight (lbs)</label>
+                            <input type="number" id="to_weight" class="form-control" value="2550" min="2200" max="2550">
+                        </div>
+                        <div class="form-group">
+                            <label>Temperature (°C)</label>
+                            <input type="number" id="to_temp" class="form-control" value="15">
+                        </div>
+                        <div class="form-group">
+                            <label>Altimeter Setting (inHg)</label>
+                            <input type="number" id="to_altimeter" class="form-control" value="29.92" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label>Field Elevation (ft)</label>
+                            <input type="number" id="to_elevation" class="form-control" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Runway Length Available (ft)</label>
+                            <input type="number" id="to_rwy_len" class="form-control" value="3000">
+                        </div>
+                        <div class="form-group">
+                            <label>Runway Heading (°)</label>
+                            <input type="number" id="to_rwy_heading" class="form-control" value="360" max="360">
+                        </div>
+                        <div class="form-group">
+                            <label>Wind Direction (°)</label>
+                            <input type="number" id="to_wind_dir" class="form-control" value="360" max="360">
+                        </div>
+                        <div class="form-group">
+                            <label>Wind Speed (kts)</label>
+                            <input type="number" id="to_wind_spd" class="form-control" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="to_grass"> Grass Runway
+                            </label>
+                        </div>
+                        <h4 class="group-title">For the briefing</h4>
+                        <div class="form-row">
+                            <div class="form-group"><label for="to_tail">Tail number</label><input type="text" id="to_tail" class="form-control" placeholder="N12345"></div>
+                            <div class="form-group"><label for="to_apt">Airport</label><input type="text" id="to_apt" class="form-control" placeholder="KPRC"></div>
+                            <div class="form-group"><label for="to_rwy">Runway</label><input type="text" id="to_rwy" class="form-control" placeholder="21L"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="to_landmark">Abort checkpoint landmark</label><input type="text" id="to_landmark" class="form-control" placeholder="taxiway C"></div>
+                            <div class="form-group"><label for="to_pic">Pilot flying</label><input type="text" id="to_pic" class="form-control" placeholder="me"></div>
+                        </div>
+                        <div class="form-group"><label for="to_departure">Departure</label><textarea id="to_departure" class="form-control" placeholder="Left crosswind, climb to 6,500, on course"></textarea></div>
+                        <div class="form-group"><label for="to_plan">Engine failure after takeoff</label><textarea id="to_plan" class="form-control" placeholder="Below 700 AGL land ahead in the field past the end. Above that, consider a turn back"></textarea></div>
+                    </form>
+                    
+                    <div id="takeoffResults" class="results-box live">
+                        <h3>Takeoff Performance</h3>
+                        <div class="result-item"><span>Pressure Altitude:</span> <span id="res_to_pa"></span></div>
+                        <div class="result-item"><span>Ground Roll:</span> <span id="res_to_gr"></span></div>
+                        <div class="result-item"><span>Distance over 50ft Obstacle:</span> <span id="res_to_50"></span></div>
+                        <div class="result-item"><span>Lift Off Speed:</span> <span id="res_to_vr"></span></div>
+                        <div class="result-item"><span>Speed at 50ft:</span> <span id="res_to_v50"></span></div>
+                        <div class="result-item" id="res_to_margin_row"><span>Runway margin over 50 ft:</span> <span id="res_to_margin"></span></div>
+                        <div class="result-item" id="res_to_abort_row"><span>Abort checkpoint:</span> <span id="res_to_abort"></span></div>
+                    </div>
+                    <h4 class="group-title">Pre-takeoff briefing</h4>
+                    <div class="explainer">
+                        <p><strong>What this is:</strong> A briefing script built from the numbers above and the 172S POH procedures. It updates as you type. Edit it, then copy or print it.</p>
+                        <details>
+                            <summary>How it works</summary>
+                            <p>It walks through conditions, the takeoff, the abort checkpoint, and what you do if the engine quits on the roll or after liftoff. Procedures and speeds come from POH Sections 3 and 4. The abort checkpoint is the <a href="blog-fifty-seventy-rule.html">50-70 rule done right</a>: 70% of liftoff speed by half the book ground roll, after adding a 50% buffer. It turns yellow past a third of the runway and red past half.</p>
+                        </details>
+                    </div>
+                    <textarea id="briefing" class="briefing-box" spellcheck="false"></textarea>
+                    <div class="briefing-actions">
+                        <button type="button" class="btn btn-primary" id="to_copy">Copy</button>
+                        <button type="button" class="btn btn-secondary" id="to_print">Print</button>
+                    </div>
+                </div>
+
+                <!-- Cruise Form -->
+                <div id="cruise" class="tab-content">
+                    <div class="explainer">
+                        <p><strong>What this answers:</strong> Your true airspeed and fuel burn at a given altitude, temperature, and RPM in a Cessna 172S.</p>
+                        <details>
+                            <summary>How it works</summary>
+                            <p>The calculator finds pressure altitude from your altimeter setting, then interpolates the POH cruise performance table across pressure altitude, temperature, and RPM.</p>
+                            <p><strong>Limits:</strong> The POH table assumes recommended lean mixture, 2550 lb, and wheel fairings. Expect a few knots less without fairings or at a heavier weight. Fuel flow is gallons per hour at that power setting; it does not include taxi, climb, or reserve.</p>
+                        </details>
+                    </div>
+                    <form id="cruiseForm">
+                        <div class="form-group">
+                            <label>Cruise Altitude (ft)</label>
+                            <input type="number" id="cr_alt" class="form-control" value="4000" step="500">
+                        </div>
+                        <div class="form-group">
+                            <label>Temperature (°C)</label>
+                            <input type="number" id="cr_temp" class="form-control" value="15">
+                        </div>
+                        <div class="form-group">
+                            <label>RPM</label>
+                            <input type="number" id="cr_rpm" class="form-control" value="2300" step="50" min="2000" max="2700">
+                        </div>
+                        <div class="form-group">
+                            <label>Altimeter Setting (inHg)</label>
+                            <input type="number" id="cr_altimeter" class="form-control" value="29.92" step="0.01">
+                        </div>
+                        <button type="button" class="btn-calc" onclick="calculateCruise()">Calculate Cruise</button>
+                    </form>
+
+                    <div id="cruiseResults" class="results-box">
+                        <h3>Cruise Performance</h3>
+                        <div class="result-item"><span>Pressure Altitude:</span> <span id="res_cr_pa"></span></div>
+                        <div class="result-item"><span>True Airspeed (TAS):</span> <span id="res_cr_tas"></span></div>
+                        <div class="result-item"><span>Fuel Flow:</span> <span id="res_cr_ff"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Adam S. Goler. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+                <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank" aria-label="ResearchGate">ResearchGate</a>
+            </div>
+        </div>
+    </footer>
+
+    <pre id="briefing_print" class="print-only"></pre>
+    <script src="script.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/c172s.js"></script>
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // Find tab by text content or index
+            const tabs = document.querySelectorAll('.tab');
+            if(tabId === 'takeoff') tabs[0].classList.add('active');
+            else tabs[1].classList.add('active');
+            
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function calculateTakeoff() {
+            const params = {
+                weight: parseFloat(document.getElementById('to_weight').value),
+                temperature: parseFloat(document.getElementById('to_temp').value),
+                altimeter: parseFloat(document.getElementById('to_altimeter').value),
+                altitude: parseFloat(document.getElementById('to_elevation').value),
+                runwayHeading: parseFloat(document.getElementById('to_rwy_heading').value),
+                windDirection: parseFloat(document.getElementById('to_wind_dir').value),
+                windSpeed: parseFloat(document.getElementById('to_wind_spd').value),
+                isGrass: document.getElementById('to_grass').checked
+            };
+
+            const results = window.Calculator.calculateTakeoff(params);
+            
+            document.getElementById('res_to_pa').textContent = results.pressureAlt + ' ft';
+            document.getElementById('res_to_gr').textContent = results.groundRoll + ' ft';
+            document.getElementById('res_to_50').textContent = results.dist50ft + ' ft';
+            document.getElementById('res_to_vr').textContent = results.liftOffSpeed + ' KIAS';
+            document.getElementById('res_to_v50').textContent = results.speed50ft + ' KIAS';
+            
+            document.getElementById('takeoffResults').style.display = 'block';
+            if (window.render172Briefing) window.render172Briefing(params, results);
+        }
+
+        function calculateCruise() {
+            const params = {
+                altitude: parseFloat(document.getElementById('cr_alt').value),
+                temperature: parseFloat(document.getElementById('cr_temp').value),
+                rpm: parseFloat(document.getElementById('cr_rpm').value),
+                altimeter: parseFloat(document.getElementById('cr_altimeter').value)
+            };
+
+            const results = window.Calculator.calculateCruise(params);
+            
+            document.getElementById('res_cr_pa').textContent = results.pressureAlt + ' ft';
+            document.getElementById('res_cr_tas').textContent = results.trueAirspeed + ' KTAS';
+            document.getElementById('res_cr_ff').textContent = results.fuelFlow + ' GPH';
+            
+            document.getElementById('cruiseResults').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

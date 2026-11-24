@@ -3,42 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cessna 172S takeoff, climb, and cruise performance calculator by Adam S. Goler, PhD - a flight-instruction tool built from POH data.">
-    <title>Performance Calculator - Adam S. Goler, PhD</title>
+    <meta name="description" content="Free flight-planning calculators by Adam Goler: climb gradient, time/speed/distance, fuel, wind components, density altitude, plus Cessna 172S and 310Q performance.">
+    <title>Flight Planning Tools - Adam Goler</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        .calculator-section { padding: 4rem 0; }
-        .calc-container { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow); }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-color); }
-        .form-control { width: 100%; padding: 0.875rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 1rem; color: var(--text-color); box-sizing: border-box; transition: var(--transition); }
-        .form-control:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2); }
-        .btn-calc { width: 100%; padding: 1rem; background: var(--primary-color); color: var(--bg-color); border: none; border-radius: var(--radius); font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: var(--transition); margin-top: 1rem; }
-        .btn-calc:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3); }
-        .results-box { margin-top: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: var(--radius); border-left: 4px solid var(--primary-color); display: none; }
-        .results-box h3 { margin-top: 0; color: var(--text-color); }
-        .result-item { display: flex; justify-content: space-between; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); color: var(--text-light); }
-        .result-item span:last-child { color: var(--text-color); font-weight: 600; }
-        .result-item:last-child { border-bottom: none; }
-        .tabs { display: flex; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
-        .tab { padding: 1rem 2rem; cursor: pointer; font-weight: 600; color: var(--text-muted); transition: var(--transition); border-bottom: 2px solid transparent; margin-bottom: -1px; }
-        .tab:hover { color: var(--primary-color); }
-        .tab.active { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); }
-        .tab-content { display: none; animation: fadeIn 0.3s ease; }
-        .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
 </head>
 <body>
-    <!-- Nav -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <h1>Adam S. Goler, PhD</h1>
+                <h1><a href="index.html">Adam Goler</a></h1>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -47,177 +24,255 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Projects</a></li>
+                <li><a href="calculator.html" class="active">Tools</a></li>
+                <li><a href="blog.html">Writing</a></li>
                 <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero" style="padding: 4rem 0; min-height: auto;">
+        <header class="hero" style="padding: 4rem 0; min-height: auto;">
         <div class="container">
             <div class="hero-content">
-                <h2>Cessna 172S Performance Calculator</h2>
-                <p>Calculate takeoff and cruise performance based on POH data.</p>
+                <span class="eyebrow">Tools</span>
+                <h2>Flight Planning Calculators</h2>
+                <p class="lead">Little tools I built because I kept doing this math on napkins.</p>
+                <p>They're free and they run in your browser. They're study and planning aids, not a replacement for your POH or your judgment. Each one has a short note on how it works and where it falls short.</p>
             </div>
         </div>
     </header>
 
     <section class="calculator-section">
         <div class="container">
-            <div class="calc-container">
-                <div class="tabs">
-                    <div class="tab active" onclick="switchTab('takeoff')">Takeoff</div>
-                    <div class="tab" onclick="switchTab('climb')">Climb</div>
-                    <div class="tab" onclick="switchTab('cruise')">Cruise</div>
+            <div class="aircraft-links">
+                <a href="c172s.html" class="btn btn-primary">Cessna 172S Takeoff &amp; Briefing →</a>
+                <a href="c310q.html" class="btn btn-primary">Cessna 310Q Takeoff, Engine-Out &amp; Briefing →</a>
+            </div>
+
+            <nav class="tool-index" aria-label="Calculators on this page">
+                <a href="#climb">Climb gradient planner</a>
+                <a href="#gradient">Gradient check</a>
+                <a href="#tsd">Time · speed · distance</a>
+                <a href="#fuel">Fuel</a>
+                <a href="#wind">Wind components</a>
+                <a href="#density">Density altitude</a>
+                <a href="#aircraft">Aircraft performance</a>
+            </nav>
+
+            <!-- Climb gradient planner -->
+            <div class="calc-container" id="climb">
+                <h3 class="calc-title">Climb Gradient Planner</h3>
+                <p class="calc-sub">Will I make the departure procedure's climb gradient?</p>
+                <div class="explainer">
+                    <p><strong>What this answers:</strong> Your worst-case climb gradient in feet per nautical mile over a climb, with winds, temperature, and climb rate all changing as you go up. Compare it to the gradient on a departure procedure or obstacle departure.</p>
+                    <details>
+                        <summary>How it works</summary>
+                        <p>Departure procedures publish gradients in ft/nm because obstacles sit at fixed distances. Your airplane climbs in feet per minute, and the ground goes by at groundspeed. So <code>gradient (ft/nm) = climb rate (fpm) ÷ (groundspeed ÷ 60)</code>.</p>
+                        <p>The planner slices the climb into 500 ft layers. In each layer it blends your start and end values for climb rate, temperature, wind, and heading. It converts your climb IAS to true airspeed using pressure altitude and temperature, then applies the headwind component to get groundspeed. The layer with the lowest gradient is your worst case, and that's the number that has to beat the chart.</p>
+                        <p><strong>Limits:</strong> Garbage in, garbage out. Use climb rates you actually see at your weight, not brochure numbers. Climb rate drops roughly linearly with altitude here, which is close for most piston airplanes. Winds aloft forecasts can be wrong. Tailwinds hurt the most. Leave a buffer.</p>
+                    </details>
                 </div>
-
-                <!-- Takeoff Form -->
-                <div id="takeoff" class="tab-content active">
-                    <form id="takeoffForm">
-                        <div class="form-group">
-                            <label>Aircraft Weight (lbs)</label>
-                            <input type="number" id="to_weight" class="form-control" value="2550" min="2200" max="2550">
-                        </div>
-                        <div class="form-group">
-                            <label>Temperature (°C)</label>
-                            <input type="number" id="to_temp" class="form-control" value="15">
-                        </div>
-                        <div class="form-group">
-                            <label>Altimeter Setting (inHg)</label>
-                            <input type="number" id="to_altimeter" class="form-control" value="29.92" step="0.01">
-                        </div>
-                        <div class="form-group">
-                            <label>Field Elevation (ft)</label>
-                            <input type="number" id="to_elevation" class="form-control" value="0">
-                        </div>
-                        <div class="form-group">
-                            <label>Runway Heading (°)</label>
-                            <input type="number" id="to_rwy_heading" class="form-control" value="360" max="360">
-                        </div>
-                        <div class="form-group">
-                            <label>Wind Direction (°)</label>
-                            <input type="number" id="to_wind_dir" class="form-control" value="360" max="360">
-                        </div>
-                        <div class="form-group">
-                            <label>Wind Speed (kts)</label>
-                            <input type="number" id="to_wind_spd" class="form-control" value="0">
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" id="to_grass"> Grass Runway
-                            </label>
-                        </div>
-                        <button type="button" class="btn-calc" onclick="calculateTakeoff()">Calculate Takeoff</button>
-                    </form>
-                    
-                    <div id="takeoffResults" class="results-box">
-                        <h3>Takeoff Performance</h3>
-                        <div class="result-item"><span>Pressure Altitude:</span> <span id="res_to_pa"></span></div>
-                        <div class="result-item"><span>Ground Roll:</span> <span id="res_to_gr"></span></div>
-                        <div class="result-item"><span>Distance over 50ft Obstacle:</span> <span id="res_to_50"></span></div>
-                        <div class="result-item"><span>Lift Off Speed:</span> <span id="res_to_vr"></span></div>
-                        <div class="result-item"><span>Speed at 50ft:</span> <span id="res_to_v50"></span></div>
+                <form id="climbForm" onsubmit="event.preventDefault(); calculateClimb();">
+                    <div class="form-row">
+                        <div class="form-group"><label for="cl_start_alt">Start altitude (ft MSL)</label><input type="number" id="cl_start_alt" class="form-control" value="2000" step="100"></div>
+                        <div class="form-group"><label for="cl_end_alt">End altitude (ft MSL)</label><input type="number" id="cl_end_alt" class="form-control" value="5000" step="100"></div>
+                        <div class="form-group"><label for="cl_required">Required gradient (ft/nm)</label><input type="number" id="cl_required" class="form-control" value="300" ></div>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="cl_ias">Climb speed (KIAS)</label><input type="number" id="cl_ias" class="form-control" value="79" ></div>
+                        <div class="form-group"><label for="cl_start_rate">Climb rate at start (fpm)</label><input type="number" id="cl_start_rate" class="form-control" value="700" ></div>
+                        <div class="form-group"><label for="cl_end_rate">Climb rate at end (fpm)</label><input type="number" id="cl_end_rate" class="form-control" value="500" ></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="cl_altimeter">Altimeter (inHg)</label><input type="number" id="cl_altimeter" class="form-control" value="29.92" step="0.01"></div>
+                        <div class="form-group"><label for="cl_start_temp">Temp at start (°C)</label><input type="number" id="cl_start_temp" class="form-control" value="15" ></div>
+                        <div class="form-group"><label for="cl_end_temp">Temp at end (°C)</label><input type="number" id="cl_end_temp" class="form-control" value="5" ></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="cl_start_wind_dir">Wind at start: from (°)</label><input type="number" id="cl_start_wind_dir" class="form-control" value="270" ></div>
+                        <div class="form-group"><label for="cl_start_wind_spd">Wind at start (kts)</label><input type="number" id="cl_start_wind_spd" class="form-control" value="10" ></div>
+                        <div class="form-group"><label for="cl_end_wind_dir">Wind at end: from (°)</label><input type="number" id="cl_end_wind_dir" class="form-control" value="270" ></div>
+                        <div class="form-group"><label for="cl_end_wind_spd">Wind at end (kts)</label><input type="number" id="cl_end_wind_spd" class="form-control" value="15" ></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="cl_start_heading">Heading at start (°)</label><input type="number" id="cl_start_heading" class="form-control" value="90" ></div>
+                        <div class="form-group"><label for="cl_end_heading">Heading at end (°)</label><input type="number" id="cl_end_heading" class="form-control" value="90" ></div>
+                    </div>
+                    <button type="submit" class="btn-calc">Calculate Climb</button>
+                </form>
+                <div id="climbResults" class="results-box">
+                    <h3>Climb Performance</h3>
+                    <div class="result-item" id="res_cl_verdict_row"><span>Do you make it?</span> <span id="res_cl_verdict"></span></div>
+                    <div class="result-item"><span>Worst-case gradient</span> <span id="res_cl_grad"></span></div>
+                    <div class="result-item"><span>Average gradient</span> <span id="res_cl_avg"></span></div>
+                    <div class="result-item"><span>Time to climb</span> <span id="res_cl_time"></span></div>
+                    <div class="result-item"><span>Distance covered</span> <span id="res_cl_dist"></span></div>
+                    <div class="result-item"><span>Highest true airspeed</span> <span id="res_cl_tas"></span></div>
+                    <div class="result-item"><span>Highest groundspeed</span> <span id="res_cl_gs"></span></div>
+                    <table class="calc-segments">
+                        <thead><tr><th>Layer (ft)</th><th>fpm</th><th>KTAS</th><th>GS</th><th>ft/nm</th></tr></thead>
+                        <tbody id="cl_segments"></tbody>
+                    </table>
                 </div>
+            </div>
 
-                <!-- Climb Form -->
-                <div id="climb" class="tab-content">
-                    <form id="climbForm">
-                        <div class="form-group">
-                            <label>Starting Altitude (ft)</label>
-                            <input type="number" id="cl_start_alt" class="form-control" value="2000" step="100">
-                        </div>
-                        <div class="form-group">
-                            <label>Ending Altitude (ft)</label>
-                            <input type="number" id="cl_end_alt" class="form-control" value="5000" step="100">
-                        </div>
-                        <div class="form-group">
-                            <label>Indicated Airspeed (KIAS)</label>
-                            <input type="number" id="cl_ias" class="form-control" value="79">
-                        </div>
-                        <div class="form-group">
-                            <label>Start Climb Rate (fpm)</label>
-                            <input type="number" id="cl_start_rate" class="form-control" value="700">
-                        </div>
-                        <div class="form-group">
-                            <label>End Climb Rate (fpm)</label>
-                            <input type="number" id="cl_end_rate" class="form-control" value="500">
-                        </div>
-                        <div class="form-group">
-                            <label>Start Temp (°C)</label>
-                            <input type="number" id="cl_start_temp" class="form-control" value="15">
-                        </div>
-                        <div class="form-group">
-                            <label>End Temp (°C)</label>
-                            <input type="number" id="cl_end_temp" class="form-control" value="5">
-                        </div>
-                        <div class="form-group">
-                            <label>Altimeter (inHg)</label>
-                            <input type="number" id="cl_altimeter" class="form-control" value="29.92" step="0.01">
-                        </div>
-                        <!-- Simplified wind inputs for brevity, can expand later -->
-                        <div class="form-group">
-                            <label>Start Wind (Dir/Spd)</label>
-                            <div style="display: flex; gap: 10px;">
-                                <input type="number" id="cl_start_wind_dir" class="form-control" placeholder="Dir" value="270">
-                                <input type="number" id="cl_start_wind_spd" class="form-control" placeholder="Spd" value="10">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>End Wind (Dir/Spd)</label>
-                            <div style="display: flex; gap: 10px;">
-                                <input type="number" id="cl_end_wind_dir" class="form-control" placeholder="Dir" value="270">
-                                <input type="number" id="cl_end_wind_spd" class="form-control" placeholder="Spd" value="15">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Heading (Start/End)</label>
-                            <div style="display: flex; gap: 10px;">
-                                <input type="number" id="cl_start_heading" class="form-control" placeholder="Start" value="90">
-                                <input type="number" id="cl_end_heading" class="form-control" placeholder="End" value="90">
-                            </div>
-                        </div>
-
-                        <button type="button" class="btn-calc" onclick="calculateClimb()">Calculate Climb</button>
-                    </form>
-
-                    <div id="climbResults" class="results-box">
-                        <h3>Climb Performance</h3>
-                        <div class="result-item"><span>Max True Airspeed:</span> <span id="res_cl_tas"></span></div>
-                        <div class="result-item"><span>Max Ground Speed:</span> <span id="res_cl_gs"></span></div>
-                        <div class="result-item"><span>Min Climb Gradient:</span> <span id="res_cl_grad"></span></div>
-                    </div>
+            <!-- Gradient quick check -->
+            <div class="calc-container" id="gradient">
+                <h3 class="calc-title">Climb Gradient Quick Check</h3>
+                <p class="calc-sub">Convert between ft/nm and fpm at your groundspeed.</p>
+                <div class="explainer">
+                    <p><strong>What this answers:</strong> What climb rate a published gradient needs at your groundspeed, and whether the climb rate you've got is enough.</p>
+                    <details>
+                        <summary>How it works</summary>
+                        <p><code>fpm = ft/nm × groundspeed ÷ 60</code>. At 90 knots you cover 1.5 nm a minute, so a 200 ft/nm standard climb needs 300 fpm. The percent figure is <code>ft/nm ÷ 6076 × 100</code>, since a nautical mile is 6,076 ft.</p>
+                        <p><strong>Limits:</strong> Use groundspeed, not airspeed. A headwind helps your gradient. A tailwind hurts it. For a climb where things change with altitude, use the planner above.</p>
+                    </details>
                 </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="gq_gs">Groundspeed (kts)</label><input type="number" id="gq_gs" class="form-control" value="90" ></div>
+                    <div class="form-group"><label for="gq_fpm">Your climb rate (fpm)</label><input type="number" id="gq_fpm" class="form-control" value="500" ></div>
+                    <div class="form-group"><label for="gq_req">Required gradient (ft/nm)</label><input type="number" id="gq_req" class="form-control" value="200" ></div>
+                </div>
+                <div class="results-box live">
+                    <div class="result-item"><span>Your gradient</span> <span id="gq_have"></span></div>
+                    <div class="result-item"><span>Climb rate needed for the requirement</span> <span id="gq_need"></span></div>
+                    <div class="result-item" id="gq_verdict_row"><span>Do you make it?</span> <span id="gq_verdict"></span></div>
+                </div>
+            </div>
 
-                <!-- Cruise Form -->
-                <div id="cruise" class="tab-content">
-                    <form id="cruiseForm">
-                        <div class="form-group">
-                            <label>Cruise Altitude (ft)</label>
-                            <input type="number" id="cr_alt" class="form-control" value="4000" step="500">
-                        </div>
-                        <div class="form-group">
-                            <label>Temperature (°C)</label>
-                            <input type="number" id="cr_temp" class="form-control" value="15">
-                        </div>
-                        <div class="form-group">
-                            <label>RPM</label>
-                            <input type="number" id="cr_rpm" class="form-control" value="2300" step="50" min="2000" max="2700">
-                        </div>
-                        <div class="form-group">
-                            <label>Altimeter Setting (inHg)</label>
-                            <input type="number" id="cr_altimeter" class="form-control" value="29.92" step="0.01">
-                        </div>
-                        <button type="button" class="btn-calc" onclick="calculateCruise()">Calculate Cruise</button>
-                    </form>
+            <!-- TSD -->
+            <div class="calc-container" id="tsd">
+                <h3 class="calc-title">Time · Speed · Distance</h3>
+                <p class="calc-sub">Fill in any two. Get the third.</p>
+                <div class="explainer">
+                    <p><strong>What this answers:</strong> How long a leg takes, how far you'll go, or how fast you need to go.</p>
+                    <details>
+                        <summary>How it works</summary>
+                        <p><code>distance = groundspeed × time</code>. Leave one box empty and it solves for that one. Type time as minutes (<code>90</code>) or hours and minutes (<code>1:30</code>).</p>
+                        <p><strong>Limits:</strong> This uses a single groundspeed for the whole leg. Climb, descent, and changing winds will stretch it.</p>
+                    </details>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="tsd_gs">Groundspeed (kts)</label><input type="number" id="tsd_gs" class="form-control" value="110" ></div>
+                    <div class="form-group"><label for="tsd_dist">Distance (nm)</label><input type="number" id="tsd_dist" class="form-control" value="145" ></div>
+                    <div class="form-group"><label for="tsd_time">Time (min or h:mm)</label><input type="text" id="tsd_time" class="form-control" placeholder="leave blank to solve"></div>
+                </div>
+                <div class="results-box live">
+                    <div class="result-item"><span>Answer</span> <span id="tsd_out"></span></div>
+                </div>
+            </div>
 
-                    <div id="cruiseResults" class="results-box">
-                        <h3>Cruise Performance</h3>
-                        <div class="result-item"><span>Pressure Altitude:</span> <span id="res_cr_pa"></span></div>
-                        <div class="result-item"><span>True Airspeed (TAS):</span> <span id="res_cr_tas"></span></div>
-                        <div class="result-item"><span>Fuel Flow:</span> <span id="res_cr_ff"></span></div>
-                    </div>
+            <!-- Fuel -->
+            <div class="calc-container" id="fuel">
+                <h3 class="calc-title">Fuel Planner</h3>
+                <p class="calc-sub">Trip fuel, endurance, and what's left when you land.</p>
+                <div class="explainer">
+                    <p><strong>What this answers:</strong> How much fuel the trip takes, how long and how far you can fly on what's in the tanks, and whether you land with your reserve intact.</p>
+                    <details>
+                        <summary>How it works</summary>
+                        <p>Trip time is <code>distance ÷ groundspeed</code>. Trip fuel is <code>trip time × fuel burn</code>. Endurance is <code>(fuel on board − taxi fuel) ÷ fuel burn</code>, and range is endurance times groundspeed. "Fuel at landing" turns yellow if you dip into your reserve and red if you run out.</p>
+                        <p><strong>Limits:</strong> One burn rate for the whole flight. Climb burns more, so add some. Use <em>usable</em> fuel, not total. The FAA minimum reserve under Part 91 VFR is 30 minutes by day and 45 at night. IFR is 45 minutes after reaching your alternate. Most of us carry more.</p>
+                    </details>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="fu_dist">Distance (nm)</label><input type="number" id="fu_dist" class="form-control" value="145" ></div>
+                    <div class="form-group"><label for="fu_gs">Groundspeed (kts)</label><input type="number" id="fu_gs" class="form-control" value="110" ></div>
+                    <div class="form-group"><label for="fu_burn">Fuel burn (gal/hr)</label><input type="number" id="fu_burn" class="form-control" value="9" step="0.1"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="fu_onboard">Usable fuel on board (gal)</label><input type="number" id="fu_onboard" class="form-control" value="40" step="0.1"></div>
+                    <div class="form-group"><label for="fu_taxi">Taxi & runup (gal)</label><input type="number" id="fu_taxi" class="form-control" value="1.4" step="0.1"></div>
+                    <div class="form-group"><label for="fu_reserve">Reserve you want (min)</label><input type="number" id="fu_reserve" class="form-control" value="45" ></div>
+                </div>
+                <div class="results-box live">
+                    <div class="result-item"><span>Time en route</span> <span id="fu_time"></span></div>
+                    <div class="result-item"><span>Trip fuel</span> <span id="fu_trip"></span></div>
+                    <div class="result-item"><span>Fuel required (trip + taxi + reserve)</span> <span id="fu_req"></span></div>
+                    <div class="result-item"><span>Endurance</span> <span id="fu_endur"></span></div>
+                    <div class="result-item"><span>Range at this groundspeed</span> <span id="fu_range"></span></div>
+                    <div class="result-item" id="fu_land_row"><span>Fuel at landing</span> <span id="fu_land"></span></div>
+                </div>
+            </div>
+
+            <!-- Wind -->
+            <div class="calc-container" id="wind">
+                <h3 class="calc-title">Wind Components</h3>
+                <p class="calc-sub">Headwind and crosswind for a runway.</p>
+                <div class="explainer">
+                    <p><strong>What this answers:</strong> How much of the wind is down the runway and how much is across it.</p>
+                    <details>
+                        <summary>How it works</summary>
+                        <p>Take the angle between the wind and the runway. <code>headwind = wind × cos(angle)</code> and <code>crosswind = wind × sin(angle)</code>. Enter the runway's actual heading (270 for runway 27). If the gust factor is set, it also shows the gust crosswind.</p>
+                        <p><strong>Limits:</strong> ATIS and ASOS winds are magnetic. METAR and TAF winds are true. Match them to your runway heading, or you can be off by the local variation. Compare the crosswind to your airplane's demonstrated crosswind and to your own limits.</p>
+                    </details>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="wc_rwy">Runway heading (°)</label><input type="number" id="wc_rwy" class="form-control" value="270" ></div>
+                    <div class="form-group"><label for="wc_dir">Wind from (°)</label><input type="number" id="wc_dir" class="form-control" value="310" ></div>
+                    <div class="form-group"><label for="wc_spd">Wind speed (kts)</label><input type="number" id="wc_spd" class="form-control" value="12" ></div>
+                    <div class="form-group"><label for="wc_gust">Gusting to (kts)</label><input type="number" id="wc_gust" class="form-control" value="" placeholder="optional"></div>
+                </div>
+                <div class="results-box live">
+                    <div class="result-item"><span>Along the runway</span> <span id="wc_head"></span></div>
+                    <div class="result-item"><span>Crosswind</span> <span id="wc_cross"></span></div>
+                    <div class="result-item"><span>Gust crosswind</span> <span id="wc_gustx"></span></div>
+                </div>
+            </div>
+
+            <!-- Density altitude -->
+            <div class="calc-container" id="density">
+                <h3 class="calc-title">Pressure &amp; Density Altitude</h3>
+                <p class="calc-sub">How high the airplane thinks it is.</p>
+                <div class="explainer">
+                    <p><strong>What this answers:</strong> The pressure altitude you'll need for performance charts, and the density altitude your engine and wings will actually feel.</p>
+                    <details>
+                        <summary>How it works</summary>
+                        <p>Pressure altitude: <code>PA = elevation + (29.92 − altimeter) × 1000</code>. Standard temperature at that altitude: <code>ISA = 15 − 2 × PA ÷ 1000</code> °C. Density altitude uses the common rule of thumb <code>DA ≈ PA + 120 × (OAT − ISA)</code>.</p>
+                        <p><strong>Limits:</strong> The 120 ft per degree rule is a good approximation, usually within a hundred feet or so of the full calculation at typical field elevations. It ignores humidity, which adds a bit more on muggy days. Most POH charts want pressure altitude and temperature, not density altitude.</p>
+                    </details>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="da_elev">Field elevation (ft)</label><input type="number" id="da_elev" class="form-control" value="5355" ></div>
+                    <div class="form-group"><label for="da_alt">Altimeter (inHg)</label><input type="number" id="da_alt" class="form-control" value="30.02" step="0.01"></div>
+                    <div class="form-group"><label for="da_oat">Temperature (°C)</label><input type="number" id="da_oat" class="form-control" value="32" ></div>
+                </div>
+                <div class="results-box live">
+                    <div class="result-item"><span>Pressure altitude</span> <span id="da_pa"></span></div>
+                    <div class="result-item"><span>Standard temp at that altitude</span> <span id="da_isa"></span></div>
+                    <div class="result-item"><span>Deviation from standard</span> <span id="da_dev"></span></div>
+                    <div class="result-item"><span>Density altitude</span> <span id="da_da"></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services bg-light" id="aircraft">
+        <div class="container">
+            <div class="section-title">
+                <span class="eyebrow">Aircraft</span>
+                <h2>Aircraft Performance</h2>
+                <p>POH charts, turned into calculators for airplanes I fly and teach in.</p>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <figure class="photo-slot">
+                        <img src="images/red-rock.jpg" alt="Red rock mesas under the wing strut of a Cessna" loading="lazy">
+                    </figure>
+                    <p class="card-meta">Single engine</p>
+                    <h3>Cessna 172S</h3>
+                    <p>Short-field takeoff distances and cruise speed and fuel burn, interpolated from the POH.</p>
+                    <a href="c172s.html" class="card-link">Open the 172S calculator →</a>
+                </div>
+                <div class="card">
+                    <figure class="photo-slot">
+                        <img src="images/panel-twin.jpg" alt="Instrument panel of a twin in cruise, both props spinning" loading="lazy" style="object-position: center 70%">
+                    </figure>
+                    <p class="card-meta">Multi engine</p>
+                    <h3>Cessna 310Q</h3>
+                    <p>Takeoff numbers, engine-out climb, and a takeoff briefing you can print and fly with.</p>
+                    <a href="c310q.html" class="card-link">Open the 310Q calculator →</a>
                 </div>
             </div>
         </div>
@@ -225,7 +280,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Adam S. Goler. All rights reserved.</p>
+            <p>&copy; 2026 Adam S. Goler, PhD</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
                 <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
@@ -236,86 +291,6 @@
 
     <script src="script.js"></script>
     <script src="js/calculator.js"></script>
-    <script>
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            
-            // Find tab by text content or index
-            const tabs = document.querySelectorAll('.tab');
-            if(tabId === 'takeoff') tabs[0].classList.add('active');
-            else if(tabId === 'climb') tabs[1].classList.add('active');
-            else tabs[2].classList.add('active');
-            
-            document.getElementById(tabId).classList.add('active');
-        }
-
-        function calculateClimb() {
-            const params = {
-                startAlt: parseFloat(document.getElementById('cl_start_alt').value),
-                endAlt: parseFloat(document.getElementById('cl_end_alt').value),
-                indicatedAirspeed: parseFloat(document.getElementById('cl_ias').value),
-                startClimbRate: parseFloat(document.getElementById('cl_start_rate').value),
-                endClimbRate: parseFloat(document.getElementById('cl_end_rate').value),
-                startTemp: parseFloat(document.getElementById('cl_start_temp').value),
-                endTemp: parseFloat(document.getElementById('cl_end_temp').value),
-                altimeter: parseFloat(document.getElementById('cl_altimeter').value),
-                startWindDir: parseFloat(document.getElementById('cl_start_wind_dir').value),
-                startWindSpeed: parseFloat(document.getElementById('cl_start_wind_spd').value),
-                endWindDir: parseFloat(document.getElementById('cl_end_wind_dir').value),
-                endWindSpeed: parseFloat(document.getElementById('cl_end_wind_spd').value),
-                startHeading: parseFloat(document.getElementById('cl_start_heading').value),
-                endHeading: parseFloat(document.getElementById('cl_end_heading').value)
-            };
-
-            const results = window.Calculator.calculateClimbGradient(params);
-            
-            document.getElementById('res_cl_tas').textContent = results.maxTas + ' KTAS';
-            document.getElementById('res_cl_gs').textContent = results.maxGs + ' kts';
-            document.getElementById('res_cl_grad').textContent = results.minGradient + ' ft/nm';
-            
-            document.getElementById('climbResults').style.display = 'block';
-        }
-
-        function calculateTakeoff() {
-            const params = {
-                weight: parseFloat(document.getElementById('to_weight').value),
-                temperature: parseFloat(document.getElementById('to_temp').value),
-                altimeter: parseFloat(document.getElementById('to_altimeter').value),
-                altitude: parseFloat(document.getElementById('to_elevation').value),
-                runwayHeading: parseFloat(document.getElementById('to_rwy_heading').value),
-                windDirection: parseFloat(document.getElementById('to_wind_dir').value),
-                windSpeed: parseFloat(document.getElementById('to_wind_spd').value),
-                isGrass: document.getElementById('to_grass').checked
-            };
-
-            const results = window.Calculator.calculateTakeoff(params);
-            
-            document.getElementById('res_to_pa').textContent = results.pressureAlt + ' ft';
-            document.getElementById('res_to_gr').textContent = results.groundRoll + ' ft';
-            document.getElementById('res_to_50').textContent = results.dist50ft + ' ft';
-            document.getElementById('res_to_vr').textContent = results.liftOffSpeed + ' KIAS';
-            document.getElementById('res_to_v50').textContent = results.speed50ft + ' KIAS';
-            
-            document.getElementById('takeoffResults').style.display = 'block';
-        }
-
-        function calculateCruise() {
-            const params = {
-                altitude: parseFloat(document.getElementById('cr_alt').value),
-                temperature: parseFloat(document.getElementById('cr_temp').value),
-                rpm: parseFloat(document.getElementById('cr_rpm').value),
-                altimeter: parseFloat(document.getElementById('cr_altimeter').value)
-            };
-
-            const results = window.Calculator.calculateCruise(params);
-            
-            document.getElementById('res_cr_pa').textContent = results.pressureAlt + ' ft';
-            document.getElementById('res_cr_tas').textContent = results.trueAirspeed + ' KTAS';
-            document.getElementById('res_cr_ff').textContent = results.fuelFlow + ' GPH';
-            
-            document.getElementById('cruiseResults').style.display = 'block';
-        }
-    </script>
+    <script src="js/tools.js"></script>
 </body>
 </html>

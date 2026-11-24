@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cessna 310Q takeoff planner: accelerate-stop, single-engine climb gradient, abort checkpoint, and a printable takeoff briefing.">
+    <title>Cessna 310Q Takeoff Planner - Adam Goler</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="index.html">Adam Goler</a></h1>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Projects</a></li>
+                <li><a href="calculator.html" class="active">Tools</a></li>
+                <li><a href="blog.html">Writing</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        <header class="hero" style="padding: 4rem 0; min-height: auto;">
+        <div class="container">
+            <div class="hero-content">
+                <span class="eyebrow">Multi engine</span>
+                <h2>Cessna 310Q Takeoff Planner</h2>
+                <p class="lead">Know what happens if an engine quits before you push the throttles up.</p>
+                <p>Plug in the day's conditions and your POH chart numbers. Get your margins, your engine-out climb, and a takeoff briefing you can read out loud. <a href="calculator.html">← All tools</a></p>
+            </div>
+        </div>
+    </header>
+
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calc-container" id="q310">
+                <div class="explainer">
+                    <p><strong>What this answers:</strong> Do you have enough runway to stop if an engine fails right at decision speed? Will the airplane climb on one engine well enough to clear what's ahead? What will you brief before you go?</p>
+                    <details>
+                        <summary>How it works</summary>
+                        <p><strong>Speeds.</strong> V-speeds come from the 310Q Owner's Manual (Figure 2-1, p. 2-6; Figure 3-1, p. 3-2; Section I, pp. 1-8 and 1-9). Decision speed is 90 KIAS. Below it, with runway left, you stop. Above it, with no runway left, you fly.</p>
+                        <p><strong>Chart numbers.</strong> You read takeoff distance, accelerate-stop distance, and single-engine climb off the POH charts in Section VI. The page doesn't guess them. It compares them to your runway and tells you the margin.</p>
+                        <p><strong>Single-engine gradient.</strong> Blue line (102 KIAS) is converted to true airspeed for the pressure altitude and temperature, then the headwind is subtracted to get groundspeed. <code>gradient = single-engine fpm ÷ (groundspeed ÷ 60)</code>. Compare it to the departure procedure, or to 200 ft/nm if there isn't one.</p>
+                        <p><strong>Abort checkpoint.</strong> This is the <a href="blog-fifty-seventy-rule.html">50-70 rule done right</a>. You should see 70% of your rotation speed by half of your ground roll. The page adds a 50% buffer to the book ground roll first, because your airplane isn't brand new. If that checkpoint is past a third of the runway, it turns yellow. Past half, it turns red. Rethink the takeoff.</p>
+                        <p><strong>Limits:</strong> Single-engine performance in a light twin is thin and the book numbers assume a new airplane, a feathered prop, and perfect technique. Many days the honest answer above decision speed is "we may not climb." Brief that. This is a planning aid for training. Your airplane's POH and your instructor have the final word.</p>
+                    </details>
+                </div>
+
+                <h4 class="group-title">The airplane and the runway</h4>
+                <div class="form-row">
+                    <div class="form-group"><label for="q_tail">Tail number</label><input type="text" id="q_tail" class="form-control"  placeholder="N1311G"></div>
+                    <div class="form-group"><label for="q_apt">Airport</label><input type="text" id="q_apt" class="form-control"  placeholder="KPRC"></div>
+                    <div class="form-group"><label for="q_rwy">Runway</label><input type="text" id="q_rwy" class="form-control"  placeholder="21L"></div>
+                    <div class="form-group"><label for="q_type">Takeoff type</label><select id="q_type" class="form-control"><option value="normal">Normal (flaps up)</option><option value="max">Max performance (flaps 15°)</option></select></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="q_rwy_len">Runway available (ft)</label><input type="number" id="q_rwy_len" class="form-control" value="7619" ></div>
+                    <div class="form-group"><label for="q_rwy_hdg">Runway heading (°)</label><input type="number" id="q_rwy_hdg" class="form-control" value="210" ></div>
+                    <div class="form-group"><label for="q_elev">Field elevation (ft)</label><input type="number" id="q_elev" class="form-control" value="5045" ></div>
+                </div>
+                <h4 class="group-title">Weather</h4>
+                <div class="form-row">
+                    <div class="form-group"><label for="q_altim">Altimeter (inHg)</label><input type="number" id="q_altim" class="form-control" value="30.05" step="0.01"></div>
+                    <div class="form-group"><label for="q_oat">Temperature (°C)</label><input type="number" id="q_oat" class="form-control" value="28" ></div>
+                    <div class="form-group"><label for="q_wdir">Wind from (°)</label><input type="number" id="q_wdir" class="form-control" value="230" ></div>
+                    <div class="form-group"><label for="q_wspd">Wind speed (kts)</label><input type="number" id="q_wspd" class="form-control" value="8" ></div>
+                </div>
+                <h4 class="group-title">From your POH charts</h4>
+                <div class="form-row">
+                    <div class="form-group"><label for="q_gr">Ground roll (ft)</label><input type="number" id="q_gr" class="form-control"  placeholder="Sec. VI"></div>
+                    <div class="form-group"><label for="q_d50">Total over 50 ft (ft)</label><input type="number" id="q_d50" class="form-control"  placeholder="Sec. VI"></div>
+                    <div class="form-group"><label for="q_asd">Accelerate-stop (ft)</label><input type="number" id="q_asd" class="form-control"  placeholder="Fig. 6-5"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label for="q_se_roc">Single-engine climb (fpm)</label><input type="number" id="q_se_roc" class="form-control"  placeholder="Sec. VI"></div>
+                    <div class="form-group"><label for="q_se_ceil">Single-engine ceiling (ft)</label><input type="number" id="q_se_ceil" class="form-control"  placeholder="optional"></div>
+                    <div class="form-group"><label for="q_req_grad">Required gradient (ft/nm)</label><input type="number" id="q_req_grad" class="form-control" value="200" ></div>
+                    <div class="form-group"><label for="q_must_clear">Altitude you must reach (ft)</label><input type="number" id="q_must_clear" class="form-control"  placeholder="MEA, terrain"></div>
+                </div>
+                <h4 class="group-title">Your plan</h4>
+                <div class="form-row">
+                    <div class="form-group"><label for="q_landmark">Abort checkpoint landmark</label><input type="text" id="q_landmark" class="form-control"  placeholder="taxiway C"></div>
+                    <div class="form-group"><label for="q_pic">Pilot flying</label><input type="text" id="q_pic" class="form-control"  placeholder="me"></div>
+                </div>
+                <div class="form-group"><label for="q_departure">Departure</label><textarea id="q_departure" class="form-control" placeholder="Runway heading to 6,500, then direct PRC"></textarea></div>
+                <div class="form-group"><label for="q_return">Engine failure after takeoff</label><textarea id="q_return" class="form-control" placeholder="Climb straight ahead to 5,800, left turn back for 21R"></textarea></div>
+
+                <div class="results-box live">
+                    <h3>Margins</h3>
+                    <div class="result-item"><span>Pressure altitude</span> <span id="qr_pa"></span></div>
+                    <div class="result-item"><span>Density altitude</span> <span id="qr_da"></span></div>
+                    <div class="result-item" id="qr_wind_row"><span>Wind</span> <span id="qr_wind"></span></div>
+                    <div class="result-item" id="qr_abort_row"><span>Abort checkpoint</span> <span id="qr_abort"></span></div>
+                    <div class="result-item" id="qr_d50_row"><span>Takeoff over 50 ft</span> <span id="qr_d50"></span></div>
+                    <div class="result-item" id="qr_asd_row"><span>Accelerate-stop</span> <span id="qr_asd"></span></div>
+                    <div class="result-item" id="qr_se_grad_row"><span>Single-engine gradient</span> <span id="qr_se_grad"></span></div>
+                    <div class="result-item" id="qr_se_req_row"><span>Versus required</span> <span id="qr_se_req"></span></div>
+                    <div class="result-item" id="qr_ceil_row"><span>Single-engine ceiling</span> <span id="qr_ceil"></span></div>
+                </div>
+
+                <h4 class="group-title">Takeoff briefing</h4>
+                <div class="explainer">
+                    <p><strong>What this is:</strong> A briefing script built from everything above. It updates as you type. Edit it however you like, then copy it or print it for the kneeboard.</p>
+                    <details>
+                        <summary>How it works</summary>
+                        <p>It follows the flow of the Owner's Manual: conditions, type of takeoff, speeds, performance, the abort checkpoint, what you do below and above decision speed, and your plan. The engine-failure steps come from Section III, p. 3-1. Blank spots show up as underscores so you notice what you haven't planned yet.</p>
+                    </details>
+                </div>
+                <textarea id="briefing" class="briefing-box" spellcheck="false"></textarea>
+                <div class="briefing-actions">
+                    <button type="button" class="btn btn-primary" id="q_copy">Copy</button>
+                    <button type="button" class="btn btn-secondary" id="q_print">Print</button>
+                </div>
+                <p class="source-note">Speeds from the Cessna 310Q Owner's Manual as summarized on Leighnor Aircraft's N1311G training sheets. Check them against the POH for your airplane.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Adam S. Goler. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/asgoler/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/gol3tron" target="_blank" aria-label="GitHub">GitHub</a>
+                <a href="https://www.researchgate.net/profile/Adam-Goler" target="_blank" aria-label="ResearchGate">ResearchGate</a>
+            </div>
+        </div>
+    </footer>
+
+    <pre id="briefing_print" class="print-only"></pre>
+    <script src="script.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/c310q.js"></script>
+</body>
+</html>
