@@ -1045,7 +1045,9 @@ textarea:focus-visible {
 
 @media (max-width: 768px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .hero-grid .photo-slot { justify-self: start; max-width: 260px; }
+    .hero-grid .photo-slot { justify-self: center; max-width: 260px; }
+    .hero-actions, .social-links-cv { justify-content: center; }
+    .about-content { text-align: center; }
     .photo-strip { grid-template-columns: 1fr; }
 }
 .hero-grid .hero-content { margin: 0; }

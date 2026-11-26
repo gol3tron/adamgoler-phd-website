@@ -1,6 +1,6 @@
 # Adam S. Goler, PhD — Personal Website
 
-The personal site of **Adam S. Goler, PhD**: physicist, pilot, flight instructor, and ML engineer.
+The personal site of **Adam S. Goler, PhD**: Physics PhD, pilot, flight instructor, and ML engineer.
 Projects, writing, and free flight-planning tools.
 
 🌐 **Live at [adamgoler.phd](https://adamgoler.phd)**
